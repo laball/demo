@@ -1,0 +1,22 @@
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\RedisDemo.exe.config
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\RedisDemo.exe
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\RedisDemo.pdb
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Common.dll
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Interfaces.dll
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Redis.dll
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Text.dll
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Common.xml
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Redis.xml
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\bin\Debug\ServiceStack.Text.xml
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\obj\Debug\RedisDemo.csprojResolveAssemblyReference.cache
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\obj\Debug\RedisDemo.exe
+C:\Users\libo\documents\visual studio 2013\Projects\Demo\RedisDemo\obj\Debug\RedisDemo.pdb
+D:\libo\code\old\Demo\RedisDemo\bin\Debug\RedisDemo.exe.config
+D:\libo\code\old\Demo\RedisDemo\bin\Debug\RedisDemo.exe
+D:\libo\code\old\Demo\RedisDemo\bin\Debug\RedisDemo.pdb
+D:\libo\code\old\Demo\RedisDemo\bin\Debug\ServiceStack.Common.xml
+D:\libo\code\old\Demo\RedisDemo\bin\Debug\ServiceStack.Redis.xml
+D:\libo\code\old\Demo\RedisDemo\bin\Debug\ServiceStack.Text.xml
+D:\libo\code\old\Demo\RedisDemo\obj\Debug\RedisDemo.csprojResolveAssemblyReference.cache
+D:\libo\code\old\Demo\RedisDemo\obj\Debug\RedisDemo.exe
+D:\libo\code\old\Demo\RedisDemo\obj\Debug\RedisDemo.pdb

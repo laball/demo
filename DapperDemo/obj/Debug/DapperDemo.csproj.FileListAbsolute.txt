@@ -1,0 +1,25 @@
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\DapperDemo.exe.config
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\DapperDemo.exe
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\DapperDemo.pdb
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\Dapper.dll
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\HZ.MODEL.dll
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\HZ.UTILITY.dll
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\Newtonsoft.Json.dll
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\Dapper.pdb
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\Dapper.xml
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\HZ.MODEL.pdb
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\bin\Debug\HZ.UTILITY.pdb
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\obj\Debug\DapperDemo.exe
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\obj\Debug\DapperDemo.pdb
+c:\Users\libo\documents\visual studio 2013\Projects\Demo\DapperDemo\obj\Debug\DapperDemo.csprojResolveAssemblyReference.cache
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\DapperDemo.exe.config
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\DapperDemo.exe
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\DapperDemo.pdb
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\HZ.MODEL.dll
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\HZ.UTILITY.dll
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\Newtonsoft.Json.dll
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\HZ.MODEL.pdb
+D:\libo\code\old\Demo\DapperDemo\bin\Debug\HZ.UTILITY.pdb
+D:\libo\code\old\Demo\DapperDemo\obj\Debug\DapperDemo.csprojResolveAssemblyReference.cache
+D:\libo\code\old\Demo\DapperDemo\obj\Debug\DapperDemo.exe
+D:\libo\code\old\Demo\DapperDemo\obj\Debug\DapperDemo.pdb

@@ -1,0 +1,9 @@
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\bin\Debug\log4net.config
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\bin\Debug\log4netDemo.exe.config
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\bin\Debug\log4netDemo.exe
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\bin\Debug\log4netDemo.pdb
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\bin\Debug\log4net.dll
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\bin\Debug\log4net.xml
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\obj\Debug\log4netDemo.csprojResolveAssemblyReference.cache
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\obj\Debug\log4netDemo.exe
+C:\Users\libo\Documents\Visual Studio 2013\Projects\Demo\log4netDemo\obj\Debug\log4netDemo.pdb

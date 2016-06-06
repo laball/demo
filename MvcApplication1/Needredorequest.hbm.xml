@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="HZ.MODEL" assembly="HZ.MODEL">
+  <class name="Needredorequest" table="NeedReDoRequest" lazy="true" >
+    <property name="Id">
+      <column name="id" sql-type="int" not-null="false" />
+    </property>
+    <property name="Url">
+      <column name="url" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Postdata">
+      <column name="postdata" sql-type="ntext" not-null="false" />
+    </property>
+    <property name="Redocount">
+      <column name="redoCount" sql-type="int" not-null="false" />
+    </property>
+    <property name="Issuccess">
+      <column name="IsSuccess" sql-type="bit" not-null="false" />
+    </property>
+    <property name="CreateOn">
+      <column name="Create_ON" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="LastRedo">
+      <column name="Last_ReDo" sql-type="datetime" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

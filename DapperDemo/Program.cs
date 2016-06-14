@@ -1,9 +1,13 @@
 ﻿using Dapper;
+using HZ.Interface;
 using HZ.MODEL;
 using System;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DapperDemo
 {
@@ -79,6 +83,55 @@ namespace DapperDemo
 
             DC_Conn = new SqlConnection(DC_ConnectionString);
             DC_Conn.Open();
+
+
+            var temlate = "【安宁鑫湖医院】温馨提示，您的体检报告已经完成，请查看您的健康状况及阳性指标，永久保存报告详情请点击";
+            //var temlate = "【河南省直三院】温馨提示，您的体检报告已经完成，请查看您的健康状况及阳性指标，永久保存报告详情请点击";
+            var url = "http://webapp.hc.ihaozhuo.com/SMSPromotion.html#/{0}/{1}/{2}";
+            //         http://webapp.hc.ihaozhuo.com/SMSPromotion.html#/{task}/{mobile}/{org}
+
+
+            var table = "bjbr001";
+
+            //var mobiles = new string[] { "15900860546","18297300619","17783055953" };
+            var mobiles = HZ_Conn.Query<string>("select distinct Mobilphone from " + table);
+
+            var shortLinkProxy = SortLinkServerProxy.ShareInstance();
+
+            var time = DateTime.Now;
+            var sms = (from c in mobiles
+                       where  !string.IsNullOrEmpty(c) && Regex.Match(c,"1[2|3|5|7|8|][0-9]{9}").Success
+                       select new
+                       {
+                           mobile = c,
+                           sms = shortLinkProxy.getSortLink(string.Format(url,1,c,table)) + " "
+                       }).ToList();
+
+            Trace.WriteLine(string.Format("cost:{0}",DateTime.Now.Subtract(time).TotalSeconds));
+
+            using(StreamWriter sw2 = new StreamWriter(table + ".txt",true,Encoding.Default))
+            {
+                var now = DateTime.Now;
+                Trace.WriteLine("write start");
+
+                foreach(var item in sms)
+                {
+
+
+                    sw2.WriteLine(item.mobile + "    " + item.sms);
+                    //Trace.WriteLine(item);
+                }
+
+                sw2.Flush();
+
+                Trace.WriteLine(string.Format("write cost:{0}",DateTime.Now.Subtract(now).TotalSeconds));
+
+                Trace.WriteLine(string.Format("电话号码数量：{0}，有效电话号码：{1}",mobiles.Count(),sms.Count()));
+            }
+
+
+            return;
+
 
             var examSQL = @"SELECT
 	                            t.AGE AS Age,
@@ -361,7 +414,20 @@ FROM
 		AND DATEADD(dd, number, CONVERT(VARCHAR(8), @start, 120) + '01') <= @end
 		AND DATEADD(dd, number, CONVERT(VARCHAR(8), @start, 120) + '01') >= @start) t5 ON t4.date = t5.date";
 
-            var items = HZ_Conn.Query<SmsStatisticResultItem>(testSql2,new { start = new DateTime(2016,5,1),end = new DateTime(2016,5,30),deptID  = 4});
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var items = HZ_Conn.Query<SmsStatisticResultItem>(testSql2,new { start = new DateTime(2016,5,1),end = new DateTime(2016,5,30),deptID = 4 });
 
             //Console.ReadLine();
 

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<log4net debug="false">
+  <root>
+    <!--如果只需要看看Sql设置INFO就够了，如果你要调试可以设置为DEBUG或ALL-->
+    <priority value="ALL" />
+    <!--<appender-ref ref="HSQLAppender" />-->
+    <appender-ref ref="TraceAppender" />
+  </root>
+  <appender name="ErrorAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="..\\log\\" />
+    <encoding value="utf-8" />
+    <maxSizeRollBackups value="50" />
+    <staticLogFileName value="false" />
+    <appendToFile value="true" />
+    <!--设置单个文件大小，设置文件名使用组合方式-->
+    <MaximumFileSize value="100MB"/>
+    <!--最小锁定模型以允许多个进程可以写入同一个文件-->
+    <param name="lockingModel"  type="log4net.Appender.FileAppender+MinimalLock" />
+    <rollingStyle value="Composite" />
+    <rollingStyle value="Date" />
+    <datePattern value="Error_yyyyMMdd.\l\o\g" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[%p(%d{HH:mm:ss})]%m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="InfoAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="..\\log\\" />
+    <encoding value="utf-8" />
+    <maxSizeRollBackups value="50" />
+    <staticLogFileName value="false" />
+    <appendToFile value="true" />
+    <!--设置单个文件大小，设置文件名使用组合方式-->
+    <MaximumFileSize value="100MB"/>
+    <!--最小锁定模型以允许多个进程可以写入同一个文件-->
+    <param name="lockingModel"  type="log4net.Appender.FileAppender+MinimalLock" />
+    <rollingStyle value="Composite" />
+    <rollingStyle value="Date" />
+    <datePattern value="yyyyMMdd.\l\o\g" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[%p(%d{HH:mm:ss})]%m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="UHealthAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="..\\log\\" />
+    <encoding value="utf-8" />
+    <maxSizeRollBackups value="50" />
+    <staticLogFileName value="false" />
+    <appendToFile value="true" />
+    <!--设置单个文件大小，设置文件名使用组合方式-->
+    <MaximumFileSize value="100MB"/>
+    <!--最小锁定模型以允许多个进程可以写入同一个文件-->
+    <param name="lockingModel"  type="log4net.Appender.FileAppender+MinimalLock" />
+    <rollingStyle value="Composite" />
+    <rollingStyle value="Date" />
+    <datePattern value="UAPI_yyyyMMdd.\l\o\g" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[%p(%d{HH:mm:ss})]%m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="UHealthErrorAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="..\\log\\" />
+    <encoding value="utf-8" />
+    <maxSizeRollBackups value="50" />
+    <staticLogFileName value="false" />
+    <appendToFile value="true" />
+    <!--设置单个文件大小，设置文件名使用组合方式-->
+    <MaximumFileSize value="100MB"/>
+    <!--最小锁定模型以允许多个进程可以写入同一个文件-->
+    <param name="lockingModel"  type="log4net.Appender.FileAppender+MinimalLock" />
+    <rollingStyle value="Composite" />
+    <rollingStyle value="Date" />
+    <datePattern value="UAPIError_yyyyMMdd.\l\o\g" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[%p(%d{HH:mm:ss})]%m%n" />
+    </layout>
+  </appender>
+
+  <appender name="HSQLAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="..\\log\\" />
+    <encoding value="utf-8" />
+    <maxSizeRollBackups value="50" />
+    <staticLogFileName value="false" />
+    <appendToFile value="true" />
+    <!--设置单个文件大小，设置文件名使用组合方式-->
+    <MaximumFileSize value="100MB"/>
+    <!--最小锁定模型以允许多个进程可以写入同一个文件-->
+    <param name="lockingModel"  type="log4net.Appender.FileAppender+MinimalLock" />
+    <rollingStyle value="Composite" />
+    <rollingStyle value="Date" />
+    <datePattern value="NSQL_yyyyMMdd.\l\o\g" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="[%p(%d{HH:mm:ss})]%m%n" />
+    </layout>
+  </appender>
+
+  <appender name="consoleAppender" type="log4net.Appender.ConsoleAppender">
+    <layout type="log4net.Layout.PatternLayout" value="%d{HH:mm:ss} %-5level %logger %thread %m%n" />
+  </appender>
+
+  <appender name="TraceAppender" type="log4net.Appender.TraceAppender">
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+
+  <logger name="logerror">
+    <level value="ERROR" />
+    <level value="WARN" />
+    <!--<level value="FATAL" />-->
+    <appender-ref ref="ErrorAppender" />
+  </logger>
+
+  <logger name="loginfo">
+    <level value="INFO" />
+    <level value="DEBUG" />
+    <appender-ref ref="InfoAppender" />
+  </logger>
+
+  <logger name="uHealthAppInfo">
+    <level value="INFO" />
+    <appender-ref ref="UHealthAppender" />
+  </logger>
+  <logger name="uHealthAppErrorInfo">
+    <level value="ERROR" />
+    <appender-ref ref="UHealthErrorAppender" />
+  </logger>
+  
+  <!--<logger name="HSQLInfo">
+    <level value="INFO" />
+    <appender-ref ref="HSQLAppender" />
+  </logger>-->
+
+  <logger name="NHibernate">
+    <level value="ERROR" />
+  </logger>
+
+  <logger name="NHibernate.SQL">
+    <level value="ERROR" />
+  </logger>
+  
+</log4net>

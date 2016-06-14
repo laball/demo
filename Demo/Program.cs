@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Demo
 {
@@ -12,11 +13,6 @@ namespace Demo
     {
         private static void Main(string[] args)
         {
-
-            var rate = 12 / (15 * 1.0);
-
-
-
             var ddd = "1111111[CDATA[url?org={org}&mobile={mobile}&task={task}]]2222222";
 
             //var ppp = @"\[CDATA\[(.*?)\]\]";
@@ -26,15 +22,7 @@ namespace Demo
 
             Trace.WriteLine(ooo.Groups[1].Value);
 
-
             var dddddd = Regex.Replace(ddd,ppp,"url?org=1&mobile=15900860546&task=123");
-
-
-
-
-           
-
-
 
             string pattern = @"\b(\w+?)\s\1\b";
             string input = "This this is a nice day. What about this? This tastes good. I saw a a dog.";

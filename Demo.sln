@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzDemo", "QuartzDemo\Qu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDemo", "EFDemo\EFDemo.csproj", "{2F91159D-5DF1-4E98-B988-A5AB2096A3F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamusMongoClientTest", "SamusMongoClientTest\SamusMongoClientTest.csproj", "{A030517E-ED0D-40A5-BB15-439C245B48B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBDriverTest", "MongoDBDriverTest\MongoDBDriverTest.csproj", "{BA1F57BC-C2AF-42A2-A8E1-2A9F2B2A518A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{2F91159D-5DF1-4E98-B988-A5AB2096A3F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F91159D-5DF1-4E98-B988-A5AB2096A3F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F91159D-5DF1-4E98-B988-A5AB2096A3F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A030517E-ED0D-40A5-BB15-439C245B48B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A030517E-ED0D-40A5-BB15-439C245B48B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A030517E-ED0D-40A5-BB15-439C245B48B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A030517E-ED0D-40A5-BB15-439C245B48B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1F57BC-C2AF-42A2-A8E1-2A9F2B2A518A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1F57BC-C2AF-42A2-A8E1-2A9F2B2A518A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1F57BC-C2AF-42A2-A8E1-2A9F2B2A518A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1F57BC-C2AF-42A2-A8E1-2A9F2B2A518A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

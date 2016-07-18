@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{4CBBD595-6D96-4899-8049-2530357F41AE}"
 EndProject
@@ -32,6 +32,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbiteMQSender", "RabbiteMQSender\RabbiteMQSender.csproj", "{D86F97A5-360C-4057-8B56-2CC02E556FA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbiteMQReceiver", "RabbiteMQReceiver\RabbiteMQReceiver.csproj", "{E8033AA7-BE9B-4B1B-98A7-EEC34E496659}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MongoTest", "MongoTest", "{7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CoreConsoleApp", "CoreConsoleApp\CoreConsoleApp.xproj", "{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Core", ".NET Core", "{96856C9E-A230-48A1-A332-45460F7761CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDemo", "ExcelDemo\ExcelDemo.csproj", "{DEC5E239-C000-487E-B4F9-AEFAB36F057B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,12 +103,23 @@ Global
 		{E8033AA7-BE9B-4B1B-98A7-EEC34E496659}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8033AA7-BE9B-4B1B-98A7-EEC34E496659}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8033AA7-BE9B-4B1B-98A7-EEC34E496659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC5E239-C000-487E-B4F9-AEFAB36F057B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC5E239-C000-487E-B4F9-AEFAB36F057B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC5E239-C000-487E-B4F9-AEFAB36F057B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC5E239-C000-487E-B4F9-AEFAB36F057B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A030517E-ED0D-40A5-BB15-439C245B48B9} = {7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}
+		{BA1F57BC-C2AF-42A2-A8E1-2A9F2B2A518A} = {7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}
 		{D86F97A5-360C-4057-8B56-2CC02E556FA1} = {01B59421-FF5C-4890-B75C-86238B1F9492}
 		{E8033AA7-BE9B-4B1B-98A7-EEC34E496659} = {01B59421-FF5C-4890-B75C-86238B1F9492}
+		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6} = {96856C9E-A230-48A1-A332-45460F7761CE}
 	EndGlobalSection
 EndGlobal

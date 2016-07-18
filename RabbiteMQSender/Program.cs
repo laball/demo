@@ -24,10 +24,10 @@ namespace RabbiteMQSender
                                      autoDelete:false,
                                      arguments:null);
 
-
-
-                string message = "Hello World!";
-                var body = Encoding.UTF8.GetBytes(message);
+                //string message = "Hello World!";
+                var message = new RabbiteMQReceiver.MQMessage() { ID = 1,Name = "Lee" };
+                //var body = Encoding.UTF8.GetBytes(message);
+                var body = message.Serialize();
 
                 channel.BasicPublish(exchange:"",
                                      routingKey:"hello",

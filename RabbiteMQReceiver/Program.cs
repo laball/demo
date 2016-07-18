@@ -24,6 +24,12 @@ namespace RabbiteMQReceiver
             using(var connection = factory.CreateConnection())
             using(var channel = connection.CreateModel())
             {
+                //exchange type: fanout,direct,topic,headers
+                //fanout:广播,消息后会将消息广播给所有绑定到它上面的队列
+
+
+                //durable:持久化
+                //exclusive:程序退出后被自动删除
                 channel.QueueDeclare(queue:"hello",
                                      durable:false,
                                      exclusive:false,
@@ -34,12 +40,18 @@ namespace RabbiteMQReceiver
                 consumer.Received += (model,ea) =>
                 {
                     var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
+                    //var message = Encoding.UTF8.GetString(body);
+
+                    var message = body.Deserialize<MQMessage>();
+
                     Console.WriteLine(" [x] Received {0}",message);
                 };
                 channel.BasicConsume(queue:"hello",
                                      noAck:true,
                                      consumer:consumer);
+
+
+
 
                 Console.WriteLine(" Press [enter] to exit.");
                 Console.ReadLine();

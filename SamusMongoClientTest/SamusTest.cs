@@ -3,6 +3,8 @@ using MongoDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
+using MongoEntity;
 
 namespace SamusMongoClientTest
 {
@@ -10,8 +12,8 @@ namespace SamusMongoClientTest
     public class SamusTest
     {
         public const string ConnectionString = "mongodb://localhost";
-        public const string DataBaseName = "TestDB";
-        public const string CollectionName = "TestDB.Customer";
+        public const string DataBaseName = "samusdb";
+        public const string CollectionName = "samusCustomer";
 
         public IMongo Mongo { get; set; }
         public IMongoDatabase Database { get; set; }
@@ -22,7 +24,8 @@ namespace SamusMongoClientTest
         public virtual void TestInitialize()
         {
             Mongo = new Mongo(ConnectionString);
-            Mongo.Connect();
+            Mongo.Connect();           
+
             Database = Mongo[DataBaseName];//Database = Mongo.GetDatabase(DataBaseName);
             MongoCollection = Database.GetCollection<Customer>(CollectionName);
         }
@@ -37,19 +40,40 @@ namespace SamusMongoClientTest
         [TestMethod]
         public void InsertTest()
         {
-            var customer = new Customer
-            {
-                ID = 1,
-                Name = "Test1",
-                Info = new CustomerInfo
-                {
-                    Phone = "15900860546",
-                    Address = "上海市南京西路1256号"
-                },
-                Orders = new List<Order>(new Order[] { new Order { ID = 11,Name = "order11",BuyTime = DateTime.Now },new Order { ID = 12,Name = "order12",BuyTime = DateTime.Now } })
-            };
+            //MongoCollection.Remove(new { },true);            
 
-            MongoCollection.Insert(customer);
+            var times = 100000;
+
+            var rd = new Random();
+
+            var time = DateTime.Now;
+
+            for(int i = 0; i < times; i++)
+            {
+                var customer = new Customer
+                {
+                    ID = i,
+                    Name = "Test_" + i.ToString("00000000"),
+                    Info = new CustomerInfo
+                    {
+                        Phone = "1590086" + rd.Next(1000,9999).ToString(),
+                        Address = "上海市南京西路1256号"
+                    },
+                    Orders = new List<Order>(new Order[] { new Order { ID = 11,Name = "order11",BuyTime = DateTime.Now },new Order { ID = 12,Name = "order12",BuyTime = DateTime.Now } })
+                };
+
+                MongoCollection.Insert(customer);
+            }
+
+            Trace.WriteLine(string.Format("Insert {0} data cost:{1} s",times.ToString(),DateTime.Now.Subtract(time).TotalSeconds.ToString("0.000")));
+        }
+
+
+        [TestMethod]
+        public void CountTest()
+        {
+            var count = MongoCollection.Count();
+            Assert.IsTrue(count > 0);
         }
 
         [TestMethod]
@@ -58,30 +82,4 @@ namespace SamusMongoClientTest
             var items = MongoCollection.Linq().ToList();
         }
     }
-
-
-    public class Customer
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public CustomerInfo Info { get; set; }
-        public IList<Order> Orders { get; set; }
-    }
-
-    public class CustomerInfo
-    {
-        public string Phone { get; set; }
-        public string Address { get; set; }
-    }
-
-    public class Order
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public DateTime BuyTime { get; set; }
-    }
-
-
-
-
 }

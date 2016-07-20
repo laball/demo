@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{4CBBD595-6D96-4899-8049-2530357F41AE}"
 EndProject
@@ -42,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDemo", "ExcelDemo\ExcelDemo.csproj", "{DEC5E239-C000-487E-B4F9-AEFAB36F057B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBDriderPressureTest", "MongoDBDriderPressureTest\MongoDBDriderPressureTest.csproj", "{64FF5E88-9072-44C7-A208-EEB2714CDA95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoEntity", "MongoEntity\MongoEntity.csproj", "{975D07E8-C514-4791-BA5C-2C13A3D36F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{64FF5E88-9072-44C7-A208-EEB2714CDA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64FF5E88-9072-44C7-A208-EEB2714CDA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64FF5E88-9072-44C7-A208-EEB2714CDA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{975D07E8-C514-4791-BA5C-2C13A3D36F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975D07E8-C514-4791-BA5C-2C13A3D36F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975D07E8-C514-4791-BA5C-2C13A3D36F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975D07E8-C514-4791-BA5C-2C13A3D36F21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +134,6 @@ Global
 		{E8033AA7-BE9B-4B1B-98A7-EEC34E496659} = {01B59421-FF5C-4890-B75C-86238B1F9492}
 		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6} = {96856C9E-A230-48A1-A332-45460F7761CE}
 		{64FF5E88-9072-44C7-A208-EEB2714CDA95} = {7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}
+		{975D07E8-C514-4791-BA5C-2C13A3D36F21} = {7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}
 	EndGlobalSection
 EndGlobal

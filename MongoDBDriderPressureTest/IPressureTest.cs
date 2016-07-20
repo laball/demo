@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MongoDBDriderPressureTest
 {
-    class Program
+    interface IPressureTest
     {
-        static void Main(string[] args)
-        {
-
-
-        }
+        int ThreadCount { get; set; }
+        long InsertCount { get; set; }
+        bool UsingBulk { get; set; }
+        void Run();
     }
 }

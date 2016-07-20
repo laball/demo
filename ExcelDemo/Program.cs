@@ -20,7 +20,11 @@ namespace ExcelDemo
         private static System.Data.IDbConnection HZ_Conn;
         private static System.Data.IDbConnection DC_Conn;
 
-
+        /*
+         * 使用微软提供的操作Offfice的库DocumentFormat.OpenXml
+         * ClosedXML在此基础上进行了封装，简化操作。
+         * 
+         * */
         static void Main(string[] args)
         {
 

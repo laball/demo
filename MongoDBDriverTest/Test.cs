@@ -26,7 +26,6 @@ namespace MongoDBDriverTest
             MongoCollection = MongoDatabase.GetCollection<Customer>(CollectionName);
         }
 
-
         [TestMethod]
         public void TestMethod1()
         {
@@ -34,9 +33,34 @@ namespace MongoDBDriverTest
         }
 
         [TestMethod]
-        public void GetAllTest()
+        public void AsQueryableTest()
         {
-            var count = MongoCollection.AsQueryable().Count();
+            var enumerable = MongoCollection.AsQueryable();
+            var selectItems = from c in enumerable
+                              select c;
+
+            var count = selectItems.Count();
+            Assert.IsTrue(count > 0);
+        }
+
+        [TestMethod]
+        public void CountTest()
+        {
+            var count = MongoCollection.Count(FilterDefinition<Customer>.Empty);
+            Assert.IsTrue(count > 0);
+
+            count = MongoCollection.Count(c => c.Info != null);
+            Assert.IsTrue(count > 0);
+        }
+
+        [TestMethod]
+        public void CountAsyncTest()
+        {
+            var count = MongoCollection.CountAsync(FilterDefinition<Customer>.Empty);
+            Assert.IsTrue(count.Result > 0);
+
+            count = MongoCollection.CountAsync(c => c.Info != null);
+            Assert.IsTrue(count.Result > 0);
         }
 
         [TestCleanup()]

@@ -8,6 +8,8 @@ using MongoEntity;
 
 namespace MongoDBDriderPressureTest
 {
+    //BuildVision
+    //https://visualstudiogallery.msdn.microsoft.com/23d3c821-ca2d-4e1a-a005-4f70f12f77ba
     interface IPressureTest
     {
         int ThreadCount { get; set; }

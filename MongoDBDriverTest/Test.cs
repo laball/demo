@@ -41,24 +41,23 @@ namespace MongoDBDriverTest
 
             var time = DateTime.Now;
 
-            for(int i = 0; i < times; i++)
+            for (int i = 0; i < times; i++)
             {
                 var customer = new Customer
                 {
-                    ID = i,
                     Name = "Test_" + i.ToString("00000000"),
                     Info = new CustomerInfo
                     {
-                        Phone = "1590086" + rd.Next(1000,9999).ToString(),
+                        Phone = "1590086" + rd.Next(1000, 9999).ToString(),
                         Address = "上海市南京西路1256号"
                     },
-                    Orders = new List<Order>(new Order[] { new Order { ID = 11,Name = "order11",BuyTime = DateTime.Now },new Order { ID = 12,Name = "order12",BuyTime = DateTime.Now } })
+                    Orders = new List<Order>(new Order[] { new Order { ID = 11, Name = "order11", BuyTime = DateTime.Now }, new Order { ID = 12, Name = "order12", BuyTime = DateTime.Now } })
                 };
 
                 MongoCollection.InsertOne(customer);
             }
 
-            Trace.WriteLine(string.Format("Insert {0} data cost:{1} s",times.ToString(),DateTime.Now.Subtract(time).TotalSeconds.ToString("0.000")));
+            Trace.WriteLine(string.Format("Insert {0} data cost:{1} s", times.ToString(), DateTime.Now.Subtract(time).TotalSeconds.ToString("0.000")));
         }
 
         [TestMethod]
@@ -90,8 +89,6 @@ namespace MongoDBDriverTest
 
             count = MongoCollection.CountAsync(c => c.Info != null);
             Assert.IsTrue(count.Result > 0);
-
-
         }
 
         [TestMethod]

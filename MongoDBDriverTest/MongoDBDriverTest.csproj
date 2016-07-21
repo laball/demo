@@ -69,10 +69,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MongoEntity\MongoEntity.csproj">
       <Project>{975d07e8-c514-4791-ba5c-2c13a3d36f21}</Project>

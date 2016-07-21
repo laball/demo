@@ -52,7 +52,6 @@ namespace SamusMongoClientTest
             {
                 var customer = new Customer
                 {
-                    ID = i,
                     Name = "Test_" + i.ToString("00000000"),
                     Info = new CustomerInfo
                     {

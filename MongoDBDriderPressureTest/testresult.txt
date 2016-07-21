@@ -1,0 +1,31 @@
+﻿//*****************************************
+ThreadCount = 10,
+InsertCount = 100000,
+UsingBulk = true,
+BulkSize = 100,
+
+Cost:790.000 ms
+Cost:805.000 ms
+Cost:910.000 ms
+Cost:926.000 ms
+Cost:919.000 ms
+Cost:950.000 ms
+Cost:969.000 ms
+Cost:1107.000 ms
+Cost:531.000 ms
+Cost:547.000 ms
+
+avg:845.4 ms
+
+//*****************************************
+
+BulkWrite Cost:972.000 ms
+BulkWrite Cost:1002.000 ms
+BulkWrite Cost:1018.000 ms
+BulkWrite Cost:993.000 ms
+BulkWrite Cost:1031.000 ms
+BulkWrite Cost:1034.000 ms
+BulkWrite Cost:990.000 ms
+BulkWrite Cost:1070.000 ms
+BulkWrite Cost:567.000 ms
+BulkWrite Cost:380.000 ms

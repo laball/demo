@@ -94,17 +94,36 @@ namespace MongoDBDriverTest
         [TestMethod]
         public void FindTest()
         {
-            var one = MongoCollection.Find(FilterDefinition<Customer>.Empty).FirstOrDefault();
-            Assert.IsNotNull(one);
+            var options = new FindOptions
+            {
+                AllowPartialResults = true,
+                BatchSize = 100,
+                Comment = "",
+                CursorType = CursorType.Tailable,
+                MaxAwaitTime = new TimeSpan(0, 0, 30),
+                MaxTime = new TimeSpan(0, 0, 30)
+            };
+
+            var emptyFilterResult1 = MongoCollection.Find(FilterDefinition<Customer>.Empty).FirstOrDefault();
+            var emptyFilterResult2 = MongoCollection.Find(string.Empty).FirstOrDefault();
+
+            var one1 = MongoCollection.Find(FilterDefinition<Customer>.Empty).FirstOrDefault();
+
+            var one2 = MongoCollection.Find("").FirstOrDefault();
+            var one3 = MongoCollection.Find(c => c.Name == "Lee").FirstOrDefault();
+
+            //Assert.IsNotNull(one);
         }
 
-
+        [TestMethod]
+        public void FindByLinQTest()
+        {
+            //var customer = MongoCollection.Find<Customer>();
+        }
 
         [TestCleanup()]
         public void TestCleanup()
         {
         }
-
     }
-
 }

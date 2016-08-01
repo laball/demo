@@ -10,9 +10,8 @@ using System.Threading;
 
 namespace MongoDBDriderPressureTest
 {
-    class Program
+    internal class Program
     {
-
         public const string ConnectionString = "mongodb://admin:a1234567@10.50.50.24:27017";
         public const string DataBaseName = "admin";
         public const string CollectionName = "ReportEntity";
@@ -20,7 +19,7 @@ namespace MongoDBDriderPressureTest
         public static IMongoDatabase MongoDatabase { get; set; }
         public static IMongoCollection<ReportEntity> MongoCollection { get; set; }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             MongoClient = new MongoClient(ConnectionString);
             //添加数据时需要打开
@@ -62,19 +61,10 @@ namespace MongoDBDriderPressureTest
             Console.ReadLine();
         }
 
-        static void TaskInsertTest()
+        private static void TaskInsertTest()
         {
-            //IPressureTest pressure = new TaskBasedPressureTest()
-            //{
-            //    ThreadCount = 10,
-            //    InsertCount = 100000,
-            //    Mode = InsertMode.BulkWrite,
-            //    BulkSize = 100,
-            //    MongoCollection = MongoCollection
-            //};
-
-            //pressure.Run();
+            };
+            pressure.Run();
         }
-
     }
 }

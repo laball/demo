@@ -5,146 +5,185 @@ using MongoEntity;
 
 namespace MongoDBDriderPressureTest
 {
-    public class PressureTestBase : IPressureTest
+    public class PressureTestBase<T> : IPressureTest<T>
     {
-        static readonly Random rd = new Random();
-
         public long InsertCount { get; set; }
-        public int ThreadCount { get; set; }
-        public InsertMode Mode { get; set; }
         public int BulkSize { get; set; }
-        public IMongoCollection<Customer> MongoCollection { get; set; }
+        public InsertMode Mode { get; set; }
+        public IMongoCollection<T> MongoCollection { get; set; }
+        public int ThreadCount { get; set; }
 
-        public virtual void Run()
+        public virtual void Run(IEnumerable<T> elements)
         {
+<<<<<<< .mine
 
+=======
+
+>>>>>>> .theirs
         }
 
-        protected void BulkWrite(long count)
+        protected void BulkWrite(IEnumerable<T> elements, int bulkSize)
         {
+
+
+			//see:http://stackoverflow.com/questions/8859533/adding-batch-upsert-to-mongodb
+
+
+            if (elements == null)
+            {
+                throw new ArgumentNullException("elements");
+            }
+
+            if (bulkSize < 1)
+            {
+                throw new InvalidOperationException("bulkSize is small than 1.");
+            }
+
+            var cache = new WriteModel<T>[bulkSize];
+<<<<<<< .mine
+            if (elements == null)
+            {
+                throw new ArgumentNullException("elements");
+            }
+
+            if (bulkSize < 1)
+            {
+                throw new InvalidOperationException("bulkSize is small than 1.");
+            }
+
+            var cache = new WriteModel<T>[bulkSize];
+=======
             //see:http://stackoverflow.com/questions/8859533/adding-batch-upsert-to-mongodb
             var cache = new WriteModel<Customer>[BulkSize];
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
             var options = new BulkWriteOptions
             {
                 BypassDocumentValidation = true,
                 IsOrdered = false
             };
 
-            for (int i = 0; i < count; i++)
+            var index = 0;
+
+            foreach (var item in elements)
             {
-                Customer customer = BuildCustomer(i);
-                cache[i % BulkSize] = new InsertOneModel<Customer>(customer);
-                if (((i + 1) % BulkSize) == 0)
+                cache[index % BulkSize] = new InsertOneModel<T>(item);
+
+                if (((index + 1) % bulkSize) == 0)
                 {
                     MongoCollection.BulkWrite(cache, options);
                 }
+
+                index++;
             }
         }
 
-        protected void BulkWriteAsync(long count)
+        protected void BulkWriteAsync(IEnumerable<T> elements, int bulkSize)
         {
-            var cache = new WriteModel<Customer>[BulkSize];
+            if (elements == null)
+            {
+                throw new ArgumentNullException("elements");
+            }
+
+            if (bulkSize < 1)
+            {
+                throw new InvalidOperationException("bulkSize is small than 1.");
+            }
+
+            var cache = new WriteModel<T>[bulkSize];
             var options = new BulkWriteOptions
             {
                 BypassDocumentValidation = true,
                 IsOrdered = false
             };
 
-            for (int i = 0; i < count; i++)
+            var index = 0;
+            foreach (var item in elements)
             {
-                Customer customer = BuildCustomer(i);
-                cache[i % BulkSize] = new InsertOneModel<Customer>(customer);
-                if (((i + 1) % BulkSize) == 0)
+                cache[index % BulkSize] = new InsertOneModel<T>(item);
+
+                if (((index + 1) % bulkSize) == 0)
                 {
                     MongoCollection.BulkWriteAsync(cache, options);
                 }
+
+                index++;
             }
         }
 
-        protected void InsertMany(long count)
+        protected void InsertMany(IEnumerable<T> elements)
         {
-            var cache = new Customer[BulkSize];
+            if (elements == null)
+            {
+                throw new ArgumentNullException("elements");
+            }
+
             var options = new InsertManyOptions
             {
                 BypassDocumentValidation = true,
                 IsOrdered = false
             };
 
-            for (int i = 0; i < count; i++)
-            {
-                Customer customer = BuildCustomer(i);
-                cache[i % BulkSize] = customer;
-                if (((i + 1) % BulkSize) == 0)
-                {
-                    MongoCollection.InsertMany(cache, options);
-                }
-            }
+            MongoCollection.InsertMany(elements, options);
         }
 
-        protected void InsertManyAsync(long count)
+        protected void InsertManyAsync(IEnumerable<T> elements)
         {
-            var cache = new Customer[BulkSize];
+            if (elements == null)
+            {
+                throw new ArgumentNullException("elements");
+            }
+
             var options = new InsertManyOptions
             {
                 BypassDocumentValidation = true,
                 IsOrdered = false
             };
 
-            for (int i = 0; i < count; i++)
-            {
-                Customer customer = BuildCustomer(i);
-                cache[i % BulkSize] = customer;
-                if (((i + 1) % BulkSize) == 0)
-                {
-                    MongoCollection.InsertManyAsync(cache, options);
-                }
-            }
+            MongoCollection.InsertManyAsync(elements, options);
         }
 
-        protected void InsertOne(long count)
+        protected void InsertOne(T element)
         {
-            for (int i = 0; i < count; i++)
+            if (element == null)
             {
-                Customer customer = BuildCustomer(i);
-                MongoCollection.InsertOne(customer);
+                throw new ArgumentNullException("element");
             }
+
+            MongoCollection.InsertOne(element);
         }
 
-        protected void InsertOneAsync(long count)
+        protected void InsertOneAsync(T element)
         {
-            for (int i = 0; i < count; i++)
+            if (element == null)
             {
-                Customer customer = BuildCustomer(i);
-                MongoCollection.InsertOneAsync(customer);
+                throw new ArgumentNullException("element");
             }
+
+            MongoCollection.InsertOneAsync(element);
         }
 
-        protected void InsertOneAsyncWithOption(long count)
+        protected void InsertOneAsyncWithOption(T element)
         {
+            if (element == null)
+            {
+                throw new ArgumentNullException("element");
+            }
+
             var options = new InsertOneOptions
             {
                 BypassDocumentValidation = true
             };
 
-            for (int i = 0; i < count; i++)
-            {
-                Customer customer = BuildCustomer(i);
-                MongoCollection.InsertOneAsync(customer, options);
-            }
-        }
-
-        protected static Customer BuildCustomer(int i)
-        {
-            return new Customer
-            {
-                Name = "Test_" + i.ToString("00000000"),
-                Info = new CustomerInfo
-                {
-                    Phone = "1590086" + rd.Next(1000, 9999).ToString(),
-                    Address = "上海市南京西路1256号"
-                },
-                Orders = new List<Order>(new Order[] { new Order { ID = 11, Name = "order11", BuyTime = DateTime.Now }, new Order { ID = 12, Name = "order12", BuyTime = DateTime.Now } })
-            };
+            MongoCollection.InsertOneAsync(element, options);
         }
     }
 }

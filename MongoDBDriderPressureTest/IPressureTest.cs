@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MongoDB.Driver;
 using MongoEntity;
 
 namespace MongoDBDriderPressureTest
 {
-    //BuildVision
-    //https://visualstudiogallery.msdn.microsoft.com/23d3c821-ca2d-4e1a-a005-4f70f12f77ba
-    interface IPressureTest
+    internal interface IPressureTest<T>
     {
         int ThreadCount { get; set; }
         long InsertCount { get; set; }
-        InsertMode Mode { get; set; }
-        /// <summary>
-        /// 当且仅当Mode in {BulkWrite,BulkWriteAsync,InsertMany,InsertManyAsync}时有效
-        /// </summary>
         int BulkSize { get; set; }
-        IMongoCollection<Customer> MongoCollection { get; set; }
-        void Run();
+        InsertMode Mode { get; set; }
+        IMongoCollection<T> MongoCollection { get; set; }
+
+        void Run(IEnumerable<T> elements);
     }
 
     public enum InsertMode
@@ -33,5 +25,4 @@ namespace MongoDBDriderPressureTest
         InsertOneAsync,
         InsertOneAsyncWithOption
     }
-
 }

@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MongoDB;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MongoDB;
 using MongoEntity;
 
 namespace SamusMongoClientTest
@@ -24,7 +24,7 @@ namespace SamusMongoClientTest
         public virtual void TestInitialize()
         {
             Mongo = new Mongo(ConnectionString);
-            Mongo.Connect();           
+            Mongo.Connect();
 
             Database = Mongo[DataBaseName];//Database = Mongo.GetDatabase(DataBaseName);
             MongoCollection = Database.GetCollection<Customer>(CollectionName);
@@ -36,11 +36,10 @@ namespace SamusMongoClientTest
             Mongo.Disconnect();
         }
 
-
         [TestMethod]
         public void InsertTest()
         {
-            //MongoCollection.Remove(new { },true);            
+            //MongoCollection.Remove(new { },true);
 
             var times = 100000;
 
@@ -48,25 +47,24 @@ namespace SamusMongoClientTest
 
             var time = DateTime.Now;
 
-            for(int i = 0; i < times; i++)
+            for (int i = 0; i < times; i++)
             {
                 var customer = new Customer
                 {
                     Name = "Test_" + i.ToString("00000000"),
                     Info = new CustomerInfo
                     {
-                        Phone = "1590086" + rd.Next(1000,9999).ToString(),
+                        Phone = "1590086" + rd.Next(1000, 9999).ToString(),
                         Address = "上海市南京西路1256号"
                     },
-                    Orders = new List<Order>(new Order[] { new Order { ID = 11,Name = "order11",BuyTime = DateTime.Now },new Order { ID = 12,Name = "order12",BuyTime = DateTime.Now } })
+                    Orders = new List<Order>(new Order[] { new Order { ID = 11, Name = "order11", BuyTime = DateTime.Now }, new Order { ID = 12, Name = "order12", BuyTime = DateTime.Now } })
                 };
 
                 MongoCollection.Insert(customer);
             }
 
-            Trace.WriteLine(string.Format("Insert {0} data cost:{1} s",times.ToString(),DateTime.Now.Subtract(time).TotalSeconds.ToString("0.000")));
+            Trace.WriteLine(string.Format("Insert {0} data cost:{1} s", times.ToString(), DateTime.Now.Subtract(time).TotalSeconds.ToString("0.000")));
         }
-
 
         [TestMethod]
         public void CountTest()

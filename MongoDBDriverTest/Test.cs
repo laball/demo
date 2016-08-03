@@ -45,13 +45,18 @@ namespace MongoDBDriverTest
             {
                 var customer = new Customer
                 {
-                    Name = "Test_" + i.ToString("00000000"),
+                    Age = rd.Next(12, 60),
+                    CreateOn = DateTime.Now,
+                    Height = 150.00d + 100 * rd.NextDouble(),
                     Info = new CustomerInfo
                     {
                         Phone = "1590086" + rd.Next(1000, 9999).ToString(),
                         Address = "上海市南京西路1256号"
                     },
-                    Orders = new List<Order>(new Order[] { new Order { ID = 11, Name = "order11", BuyTime = DateTime.Now }, new Order { ID = 12, Name = "order12", BuyTime = DateTime.Now } })
+                    IsMail = rd.Next(0, 1) == 0 ? false : true,
+                    Name = "Test_" + i.ToString("00000000"),
+                    Orders = new List<Order>(new Order[] { new Order { ID = 11, Name = "order11", BuyTime = DateTime.Now }, new Order { ID = 12, Name = "order12", BuyTime = DateTime.Now } }),
+                    Weight = 48.00f + 50f * (float)rd.NextDouble()
                 };
 
                 MongoCollection.InsertOne(customer);
@@ -104,15 +109,43 @@ namespace MongoDBDriverTest
                 MaxTime = new TimeSpan(0, 0, 30)
             };
 
-            var emptyFilterResult1 = MongoCollection.Find(FilterDefinition<Customer>.Empty).FirstOrDefault();
-            var emptyFilterResult2 = MongoCollection.Find(string.Empty).FirstOrDefault();
+            //empty filter
+            var one1 = MongoCollection.Find(FilterDefinition<Customer>.Empty).Limit(1).FirstOrDefault();
+            Assert.IsNotNull(one1);
 
-            var one1 = MongoCollection.Find(FilterDefinition<Customer>.Empty).FirstOrDefault();
+            // Age > 30
+            var gt1 = MongoCollection.Find("{'Age':{$gt:30}}").Limit(1).FirstOrDefault();
+            Assert.IsNotNull(gt1);
+            var gt2 = MongoCollection.Find(c => c.Age > 30).Limit(1).FirstOrDefault();
+            Assert.IsNotNull(gt2);
 
-            var one2 = MongoCollection.Find("").FirstOrDefault();
-            var one3 = MongoCollection.Find(c => c.Name == "Lee").FirstOrDefault();
+            //Age < 25
+            var lt1 = MongoCollection.Find("{'Age':{$lt:25}}").Limit(1).FirstOrDefault();
+            Assert.IsNotNull(lt1);
+            var lt2 = MongoCollection.Find(c => c.Age < 25).Limit(1).FirstOrDefault();
+            Assert.IsNotNull(lt2);
 
-            //Assert.IsNotNull(one);
+            //Age >= 40
+            var gte1 = MongoCollection.Find("{'Age':{$gte:40}}").Limit(1).FirstOrDefault();
+            Assert.IsNotNull(gte1);
+            var gte2 = MongoCollection.Find(c => c.Age >= 49).Limit(1).FirstOrDefault();
+            Assert.IsNotNull(gte2);
+
+            //Age <= 60
+            var lte1 = MongoCollection.Find("{'Age':{$lte:60}}").Limit(1).FirstOrDefault();
+            Assert.IsNotNull(lte1);
+            var lte2 = MongoCollection.Find(c => c.Age <= 60).Limit(1).FirstOrDefault();
+            Assert.IsNotNull(lte2);
+
+            //Age >= 18 <= 60
+            var complex1 = MongoCollection.Find("{'Age':{$gte:18,$lte:60}}").Limit(1).FirstOrDefault();
+            Assert.IsNotNull(complex1);
+            var complex2 = MongoCollection.Find(c => c.Age >= 18 && c.Age <= 60).Limit(1).FirstOrDefault();
+            Assert.IsNotNull(complex2);
+
+            //$all
+            var all1 = MongoCollection.Find("{'Age':{$all:[57]}}").Count();
+            Assert.IsNotNull(all1 > 0);
         }
 
         [TestMethod]

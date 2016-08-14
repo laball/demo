@@ -46,14 +46,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoEntity", "MongoEntity\MongoEntity.csproj", "{975D07E8-C514-4791-BA5C-2C13A3D36F21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Server", "SQL Server", "{448FC167-25F9-455D-9CA4-F5A435906F0A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerConnectionTest", "SqlServerConnectionTest\SqlServerConnectionTest.csproj", "{44A76DA7-B261-41DA-A015-CE5549B46130}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo", "WebApiDemo\WebApiDemo.csproj", "{F87EC436-BE4B-488C-A7EB-F592E75A8D02}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacDemo", "AutofacDemo\AutofacDemo.csproj", "{5FC34104-44C1-45FB-92F6-64DE46AAE3CB}"
-EndProject
-Global
+EndProjectGlobal
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -136,28 +129,6 @@ Global
 		{93DA69F8-CD6F-4469-B585-F2C33E6CAC87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93DA69F8-CD6F-4469-B585-F2C33E6CAC87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93DA69F8-CD6F-4469-B585-F2C33E6CAC87}.Release|Any CPU.Build.0 = Release|Any CPU
-
-
-
-
-
-
-
-
-=======
-		{44A76DA7-B261-41DA-A015-CE5549B46130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44A76DA7-B261-41DA-A015-CE5549B46130}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44A76DA7-B261-41DA-A015-CE5549B46130}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44A76DA7-B261-41DA-A015-CE5549B46130}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F87EC436-BE4B-488C-A7EB-F592E75A8D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F87EC436-BE4B-488C-A7EB-F592E75A8D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F87EC436-BE4B-488C-A7EB-F592E75A8D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F87EC436-BE4B-488C-A7EB-F592E75A8D02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FC34104-44C1-45FB-92F6-64DE46AAE3CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FC34104-44C1-45FB-92F6-64DE46AAE3CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FC34104-44C1-45FB-92F6-64DE46AAE3CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FC34104-44C1-45FB-92F6-64DE46AAE3CB}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> .theirs
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +141,5 @@ Global
 		{BDCB32DF-BB9E-4ED8-862E-B60E3428EDC6} = {96856C9E-A230-48A1-A332-45460F7761CE}
 		{64FF5E88-9072-44C7-A208-EEB2714CDA95} = {7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}
 		{975D07E8-C514-4791-BA5C-2C13A3D36F21} = {7B98EC27-7160-4C2C-A3A6-5154FF63FFE7}
-		{44A76DA7-B261-41DA-A015-CE5549B46130} = {448FC167-25F9-455D-9CA4-F5A435906F0A}
 	EndGlobalSection
 EndGlobal

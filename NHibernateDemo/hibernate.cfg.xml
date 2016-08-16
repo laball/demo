@@ -4,7 +4,8 @@
     <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
     <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
-    <property name="connection.connection_string">server=localhost;database=tese;uid=sa;pwd=libo8923052;</property>
+    <!--<property name="connection.connection_string">server=localhost;database=tese;uid=sa;pwd=libo8923052;</property>-->
+    <property name="connection.connection_string">server=HZSWVDSQL01;database=HzHmisDev;uid=apidev;pwd =haozhuo2015</property>
     <property name="show_sql">true</property>
   </session-factory>
 </hibernate-configuration>

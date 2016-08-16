@@ -22,7 +22,7 @@ namespace MvcApplication1
     {
         protected void Application_Start()
         {
-            var format = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            //var format = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
 
             AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
             {

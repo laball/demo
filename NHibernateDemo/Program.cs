@@ -11,16 +11,51 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Collections.Generic;
 
 namespace NHibernateDemo
 {
     class Program
     {
         static ISessionFactory SessionFactory;
+        private static IList<ISession> SessionList = new List<ISession>();
 
         static void Main(string[] args)
         {
+
             MappingByAttribute();
+
+            var session2 = SessionFactory.OpenSession();
+
+            try
+            {
+                var tx = session2.BeginTransaction();
+
+                tx.Commit();
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.StackTrace);
+            }
+
+
+
+            try
+            {
+                var count = 100000;
+                for (int i = 0; i < count; i++)
+                {
+                    var session1 = SessionFactory.OpenSession();
+                    SessionList.Add(session1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.StackTrace);
+                //LogHelper.Log("Session Test", LogCategory.Error, ex);
+            }
+
+            return;
 
 
             var session = SessionFactory.OpenSession();
@@ -87,7 +122,7 @@ namespace NHibernateDemo
             cfg.Configure();
 
             //NHibernate.Mapping.Attributes.HbmSerializer.Default.Validate = true;
-            cfg.AddInputStream(HbmSerializer.Default.Serialize(Assembly.GetExecutingAssembly()));
+            //cfg.AddInputStream(HbmSerializer.Default.Serialize(Assembly.GetExecutingAssembly()));
 
             SessionFactory = cfg.BuildSessionFactory();
         }

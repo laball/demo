@@ -17,11 +17,12 @@ namespace MongoDBDriderPressureTest
 
         public virtual void Run()
         {
-            
+
         }
 
         protected void BulkWrite(long count)
         {
+            //see:http://stackoverflow.com/questions/8859533/adding-batch-upsert-to-mongodb
             var cache = new WriteModel<Customer>[BulkSize];
             var options = new BulkWriteOptions
             {

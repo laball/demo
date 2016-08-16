@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
-    public class ValuesController :ApiController
+    public class ValuesController : ApiController
     {
         // GET api/values
         //public IEnumerable<string> Get()
@@ -23,7 +23,7 @@ namespace MvcApplication1.Controllers
         {
             return await Task.Factory.StartNew(() =>
             {
-                return new string[] { "111","222","333" };
+                return new string[] { "111", "222", "333" };
             });
         }
 
@@ -38,9 +38,9 @@ namespace MvcApplication1.Controllers
                     var items = session.QueryOver<Needredorequest>().List();
 
 
-                    Trace.WriteLine(string.Format("Session:{0}",session == null ? -12345678 : session.GetHashCode()));
+                    Trace.WriteLine(string.Format("Session:{0}", session == null ? -12345678 : session.GetHashCode()));
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Trace.WriteLine(ex.StackTrace);
                 }
@@ -52,12 +52,26 @@ namespace MvcApplication1.Controllers
         // POST api/values
         public void Post([FromBody]string value)
         {
+
+
         }
 
         // PUT api/values/5
-        public void Put(int id,[FromBody]string value)
+        public void Put(int id, [FromBody]string value)
         {
         }
+
+
+        public int GetData()
+        {
+            var session = NHibernateSessionContext.SessionFactory.GetCurrentSession();
+            var items = session.CreateSQLQuery("SELECT ID from BAS_CONST").List<int>();
+
+            Trace.WriteLine(string.Format("{0}", string.Join(",", items)));
+
+            return 0;
+        }
+
 
         // DELETE api/values/5
         public void Delete(int id)

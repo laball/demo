@@ -20,8 +20,8 @@ namespace MvcApplication1
                         SessionFactory = nhConfig.BuildSessionFactory();
 
 
-                        var session = NHibernateSessionContext.SessionFactory.GetCurrentSession();
-                        var items = session.QueryOver<Needredorequest>().List();
+                        //var session = NHibernateSessionContext.SessionFactory.GetCurrentSession();
+                        //var items = session.QueryOver<Needredorequest>().List();
 
                     }
                 }

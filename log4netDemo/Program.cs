@@ -14,22 +14,29 @@ namespace log4netDemo
     {
         static void Main(string[] args)
         {
+
+            var log = LogManager.GetLogger(typeof(MyClass));
+
+
+            log.Debug("MyClass log test");
+
+
             var ddd = DateTime.MinValue;
 
             var span = TimeSpan.Parse("10:10:10");
 
             log.Debug("log4net db test");
-            log.Debug("log4net db testlog4net db test",new InvalidOperationException("InvalidOperationException"));
+            log.Debug("log4net db testlog4net db test", new InvalidOperationException("InvalidOperationException"));
 
             //*********************************************************
             //配置中设置了bufferSize的值，则程序关闭时可能会丢掉最后的日志
             ILogger logger = log.Logger;
             ILoggerRepository logRepository = logger.Repository;
             IAppender[] apperders = logRepository.GetAppenders();
-            foreach(var apperder in apperders)
+            foreach (var apperder in apperders)
             {
                 var adoNetAppender = apperder as AdoNetAppender;
-                if(adoNetAppender != null)
+                if (adoNetAppender != null)
                 {
                     adoNetAppender.Flush();
                 }
@@ -44,4 +51,12 @@ namespace log4netDemo
 
         private static readonly ILog log = LogManager.GetLogger("DBLog");
     }
+
+
+    public class MyClass
+    {
+
+    }
+
+
 }

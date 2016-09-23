@@ -127,6 +127,12 @@
     <level value="ERROR" />
     <appender-ref ref="UHealthErrorAppender" />
   </logger>
+
+
+  <logger name="log4netDemo.MyClass">
+    <level value="DEBUG" />
+    <!--<appender-ref ref="consoleAppender" />-->
+  </logger>
   
   <!--<logger name="HSQLInfo">
     <level value="INFO" />

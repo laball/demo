@@ -13,18 +13,57 @@ namespace Demo
     {
         private static void Main(string[] args)
         {
-            var patterm = @"1\d{10}$";
+            var rd = new Random();
 
-            var  phones = new []{"15900860546", "159008605461", "15900860546q","1590086054*", "0371-65636337", "2044563", "" };
-
-            var realPhones = from c in phones
-                             where Regex.IsMatch(c, patterm)
-                             select c;
-
-            Trace.WriteLine(string.Join("\r\n", realPhones));
-
+            for (int i = 0; i < 100; i++)
+            {
+                Trace.WriteLine(rd.Next(100000, 999999));
+            }
 
             Console.ReadLine();
         }
     }
+
+
+    public class RquestEventArgs : EventArgs
+    {
+        public int ID { get; set; }
+
+        public string Message { get; set; }
+    }
+
+
+    public class MyClass
+    {
+        public static EventHandler<RquestEventArgs> OnRequest { get; set; }
+
+        private void FireRequest(RquestEventArgs args)
+        {
+            if (OnRequest != null)
+            {
+                OnRequest(this, args);
+            }
+        }
+
+
+
+        public void UpdateUserInfo(int userID, string userName)
+        {
+            var success = false;
+            success = true;
+
+            int id = 10;
+
+            var args = new RquestEventArgs
+            {
+                ID = id,
+                Message = userName
+            };
+
+            FireRequest(args);
+        }
+
+
+    }
+
 }

@@ -1,0 +1,12 @@
+﻿{
+  "components": [
+    {
+      "type": "AutofacDemo.Bird,AutofacDemo",
+      "services": [
+        {
+          "type": "AutofacDemo.IFly,AutofacDemo"
+        }
+      ]
+    }
+  ]
+}

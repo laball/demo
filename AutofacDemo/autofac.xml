@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<autofac>
+  <components name="0">
+    <type>AutofacDemo.Bird,AutofacDemo</type>
+    <services name="0" type="AutofacDemo.IFly,AutofacDemo" />
+  </components>
+</autofac>

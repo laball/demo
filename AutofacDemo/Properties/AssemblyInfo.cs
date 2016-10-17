@@ -8,15 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AutofacDemo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-<<<<<<< HEAD
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("AutofacDemo")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
-=======
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AutofacDemo")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
->>>>>>> c9d16bd... 添加测试代码
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -26,13 +20,9 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-<<<<<<< HEAD
-[assembly: Guid("5fc34104-44c1-45fb-92f6-64de46aae3cb")]
-=======
 [assembly: Guid("9f357920-3fd3-4336-9def-74a084cc2644")]
->>>>>>> c9d16bd... 添加测试代码
 
-// 程序集的版本信息由下列四个值组成: 
+// 程序集的版本信息由下列四个值组成:
 //
 //      主版本
 //      次版本

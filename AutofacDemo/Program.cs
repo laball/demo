@@ -12,8 +12,8 @@ namespace AutofacDemo
         {
             //RegistByCode();
             //RegisByAssembly();
-            //BuildByXml();
-            BuildByJson();
+            BuildByXml();
+            //BuildByJson();
 
             using (var scope = container.BeginLifetimeScope())
             {

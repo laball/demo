@@ -1,8 +1,8 @@
 ﻿using System;
-using MongoDB.Driver;
-using MongoEntity;
 using System.Diagnostics;
 using System.Threading;
+using MongoDB.Driver;
+using MongoEntity;
 
 namespace MongoDBDriderPressureTest
 {
@@ -59,8 +59,7 @@ namespace MongoDBDriderPressureTest
 
         private static void TaskInsertTest()
         {
-            };
-            pressure.Run();
+            //pressure.Run();
         }
     }
 }

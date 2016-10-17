@@ -14,56 +14,24 @@ namespace MongoDBDriderPressureTest
 
         public virtual void Run(IEnumerable<T> elements)
         {
-<<<<<<< .mine
-
-=======
-
->>>>>>> .theirs
         }
 
         protected void BulkWrite(IEnumerable<T> elements, int bulkSize)
         {
-
-
-			//see:http://stackoverflow.com/questions/8859533/adding-batch-upsert-to-mongodb
-
-
-            if (elements == null)
-            {
-                throw new ArgumentNullException("elements");
-            }
-
-            if (bulkSize < 1)
-            {
-                throw new InvalidOperationException("bulkSize is small than 1.");
-            }
-
-            var cache = new WriteModel<T>[bulkSize];
-<<<<<<< .mine
-            if (elements == null)
-            {
-                throw new ArgumentNullException("elements");
-            }
-
-            if (bulkSize < 1)
-            {
-                throw new InvalidOperationException("bulkSize is small than 1.");
-            }
-
-            var cache = new WriteModel<T>[bulkSize];
-=======
             //see:http://stackoverflow.com/questions/8859533/adding-batch-upsert-to-mongodb
-            var cache = new WriteModel<Customer>[BulkSize];
 
+            if (elements == null)
+            {
+                throw new ArgumentNullException("elements");
+            }
 
+            if (bulkSize < 1)
+            {
+                throw new InvalidOperationException("bulkSize is small than 1.");
+            }
 
+            var cache = new WriteModel<T>[bulkSize];
 
-
-
-
-
-
->>>>>>> .theirs
             var options = new BulkWriteOptions
             {
                 BypassDocumentValidation = true,

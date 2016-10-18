@@ -12,20 +12,20 @@ namespace EFDemo
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Teacher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public Teacher()
         {
+            this.Class = new HashSet<Class>();
             this.SudentClass = new HashSet<SudentClass>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> ClassLevel { get; set; }
-        public Nullable<int> Age { get; set; }
-        public Nullable<System.DateTime> BirthDay { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Class> Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SudentClass> SudentClass { get; set; }
     }

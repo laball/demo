@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PostSharp.Aspects;
 
 namespace PostSharpDemo
 {
     [Serializable]
-    public sealed class CacheAttribute : OnMethodInvocationAspect
+    public sealed class CacheAttribute : MethodInterceptionAspect
     {
         private readonly string key;
 
@@ -16,18 +17,18 @@ namespace PostSharpDemo
             this.key = key;
         }
 
-        public override void OnInvocation(MethodInvocationEventArgs context)
+        public override void OnInvoke(MethodInterceptionArgs context)
         {
-            object value;
+            //object value;
 
-            if (!CacheHelper.Get(key, out value))
-            {
-                // Do lookup based on caller's logic.
-                value = context.Delegate.DynamicInvoke();
-                CacheHelper.Add(value, key);
-            }
+            //if (!CacheHelper.Get(key, out value))
+            //{
+            //    // Do lookup based on caller's logic.
+            //    value = context.Delegate.DynamicInvoke();
+            //    CacheHelper.Add(value, key);
+            //}
 
-            context.ReturnValue = value;
+            //context.ReturnValue = value;
         }
     }
 }

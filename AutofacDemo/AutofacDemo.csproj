@@ -93,7 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bird.cs" />
+    <Compile Include="Dog.cs" />
     <Compile Include="IFly.cs" />
+    <Compile Include="IRun.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

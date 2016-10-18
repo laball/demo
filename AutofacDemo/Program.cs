@@ -10,9 +10,9 @@ namespace AutofacDemo
     {
         private static void Main(string[] args)
         {
-            //RegistByCode();
+            RegistByCode();
             //RegisByAssembly();
-            BuildByXml();
+            //BuildByXml();
             //BuildByJson();
 
             using (var scope = container.BeginLifetimeScope())
@@ -27,7 +27,8 @@ namespace AutofacDemo
         private static void RegistByCode()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(new Bird()).As<IFly>();
+            builder.RegisterType<Bird>().As<IFly>();
+            builder.RegisterType<Dog>().As<IRun>();
 
             container = builder.Build();
         }

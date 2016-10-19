@@ -9,19 +9,7 @@
         {
             System.Console.Write("eeee");
             System.Console.ReadLine();
-
-            TestMethod();
         }
-
-        /// <summary>
-        /// <code>
-        /// var item = new Item(){};
-        ///
-        /// </code>
-        /// <seealso cref="System.Diagnostics.Debug.Assert(bool, string)"/>
-        /// </summary>
-        public static void TestMethod()
-        {
-        }
+                       
     }
 }

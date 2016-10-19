@@ -10,6 +10,9 @@ namespace NinjectDemo
     {
         static void Main(string[] args)
         {
+
+
+
         }
     }
 }

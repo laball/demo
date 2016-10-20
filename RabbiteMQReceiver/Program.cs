@@ -20,35 +20,30 @@ namespace RabbiteMQReceiver
 
         static void Main(string[] args)
         {
-            var factory = new ConnectionFactory { HostName = "localhost",UserName = "root",Password = "root",VirtualHost = "/" };
-            using(var connection = factory.CreateConnection())
-            using(var channel = connection.CreateModel())
+            var factory = new ConnectionFactory { HostName = "localhost", UserName = "root", Password = "root", VirtualHost = "/" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
             {
                 //exchange type: fanout,direct,topic,headers
                 //fanout:广播,消息后会将消息广播给所有绑定到它上面的队列
 
-
                 //durable:持久化
                 //exclusive:程序退出后被自动删除
-                channel.QueueDeclare(queue:"hello",
-                                     durable:false,
-                                     exclusive:false,
-                                     autoDelete:false,
-                                     arguments:null);
+                channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
+                //channel.BasicQos();
 
                 var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model,ea) =>
+                consumer.Received += (model, ea) =>
                 {
                     var body = ea.Body;
                     //var message = Encoding.UTF8.GetString(body);
 
                     var message = body.Deserialize<MQMessage>();
 
-                    Console.WriteLine(" [x] Received {0}",message);
+                    Trace.WriteLine(string.Format("ID:{0},Name:{1},CreateTime:{2}", message.ID, message.Name, message.CreateTime.ToString("yyyy-MM-dd HH:mm:ss fff")));
                 };
-                channel.BasicConsume(queue:"hello",
-                                     noAck:true,
-                                     consumer:consumer);
+
+                channel.BasicConsume(queue: "hello", noAck: true, consumer: consumer);
 
 
 
@@ -72,26 +67,26 @@ namespace RabbiteMQReceiver
 
         public static T Deserialize<T>(this byte[] byteData)
         {
-            using(var stream = new MemoryStream(byteData,false))
+            using (var stream = new MemoryStream(byteData, false))
             {
                 IFormatter formatter = new BinaryFormatter();
                 return (T)formatter.Deserialize(stream);
             }
         }
 
-        static void consumer_Received(object sender,BasicDeliverEventArgs e)
+        static void consumer_Received(object sender, BasicDeliverEventArgs e)
         {
-            using(var stream = new MemoryStream(e.Body,false))
+            using (var stream = new MemoryStream(e.Body, false))
             {
                 IFormatter formatter = new BinaryFormatter();
                 var message = (MQMessage)formatter.Deserialize(stream);
-                Trace.WriteLine(string.Format("ID:{0},Name:{1}",message.ID,message.Name));
+                Trace.WriteLine(string.Format("ID:{0},Name:{1}", message.ID, message.Name));
             }
         }
 
         public static void Initialize()
         {
-            Factory = new ConnectionFactory { HostName = "localhost",UserName = "root",Password = "root",VirtualHost = "/" };
+            Factory = new ConnectionFactory { HostName = "localhost", UserName = "root", Password = "root", VirtualHost = "/" };
             Connection = Factory.CreateConnection();
             ReceiveChannel = Connection.CreateModel();
         }

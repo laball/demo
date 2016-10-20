@@ -23,11 +23,17 @@ namespace ProtobufDemo
                 }
             };
 
-
             using (var file = File.Create("person.bin"))
             {
                 Serializer.Serialize(file, person);
             }
+
+            Person newPerson;
+            using (var file = File.OpenRead("person.bin"))
+            {
+                newPerson = Serializer.Deserialize<Person>(file);
+            }
+
         }
     }
 

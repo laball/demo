@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Jil;
 
 namespace JilDemo
 {
@@ -31,7 +30,7 @@ namespace JilDemo
                 var watch = new Stopwatch();
                 watch.Start();
 
-                var json = Jil.JSON.Serialize(obj);
+                var json = JSON.Serialize(obj);
 
                 watch.Stop();
 

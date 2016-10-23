@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using ProtoBuf;
 
 namespace ProtobufDemo
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var person = new Person
             {
@@ -33,29 +28,29 @@ namespace ProtobufDemo
             {
                 newPerson = Serializer.Deserialize<Person>(file);
             }
-
         }
     }
 
-
     [ProtoContract]
-    class Person
+    internal class Person
     {
         [ProtoMember(1)]
         public int Id { get; set; }
+
         [ProtoMember(2)]
         public string Name { get; set; }
+
         [ProtoMember(3)]
         public Address Address { get; set; }
     }
 
     [ProtoContract]
-    class Address
+    internal class Address
     {
         [ProtoMember(1)]
         public string Line1 { get; set; }
+
         [ProtoMember(2)]
         public string Line2 { get; set; }
     }
-
 }

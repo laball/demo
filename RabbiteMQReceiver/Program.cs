@@ -27,10 +27,15 @@ namespace RabbiteMQReceiver
                 //exchange type: fanout,direct,topic,headers
                 //fanout:广播,消息后会将消息广播给所有绑定到它上面的队列
 
+                channel.ExchangeDeclare("test", "direct");
+
+
                 //durable:持久化
                 //exclusive:程序退出后被自动删除
                 channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
                 //channel.BasicQos();
+
+                channel.ExchangeBind("", "", "");
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>

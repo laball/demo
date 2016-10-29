@@ -25,7 +25,11 @@ namespace RabbiteMQSender
 
             channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
 
-            Task.Factory.StartNew(SendMessagePerSecond);
+            var task = Task.Factory.StartNew(SendMessagePerSecond);
+            task.ContinueWith((tsk) =>
+            {
+                Initialize();
+            });
 
             //UnInitialize();
 
@@ -53,7 +57,14 @@ namespace RabbiteMQSender
 
         static void Initialize()
         {
-            factory = new ConnectionFactory { HostName = "localhost", UserName = "root", Password = "root", VirtualHost = "/" };
+            factory = new ConnectionFactory
+            {
+                HostName = "localhost",
+                UserName = "root",
+                Password = "root",
+                VirtualHost = "/"
+            };
+
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
         }

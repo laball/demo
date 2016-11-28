@@ -77,6 +77,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ABP", "ABP", "{4D00B779-D15
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerplateWebApp", "BoilerplateWebApp\BoilerplateWebApp.csproj", "{BFA98C7F-2632-4544-8498-E823BBCDA7D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBusDemo", "NServiceBusDemo\NServiceBusDemo.csproj", "{E4B1BF23-C9BF-4094-B950-7F11CE221840}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -199,6 +201,10 @@ Global
 		{BFA98C7F-2632-4544-8498-E823BBCDA7D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFA98C7F-2632-4544-8498-E823BBCDA7D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFA98C7F-2632-4544-8498-E823BBCDA7D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B1BF23-C9BF-4094-B950-7F11CE221840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B1BF23-C9BF-4094-B950-7F11CE221840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B1BF23-C9BF-4094-B950-7F11CE221840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B1BF23-C9BF-4094-B950-7F11CE221840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

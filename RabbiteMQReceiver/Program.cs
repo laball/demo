@@ -20,7 +20,8 @@ namespace RabbiteMQReceiver
 
         static void Main(string[] args)
         {
-            var factory = new ConnectionFactory { HostName = "localhost", UserName = "root", Password = "root", VirtualHost = "/" };
+            //var factory = new ConnectionFactory { HostName = "localhost", UserName = "root", Password = "root", VirtualHost = "/" };
+            var factory = new ConnectionFactory { HostName = "10.50.50.22", UserName = "hzadmin", Password = "a1234567", VirtualHost = "/" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

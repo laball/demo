@@ -6,23 +6,15 @@ using System.Threading.Tasks;
 
 namespace NServiceBusDemo
 {
-
     public class NullInstance<T> where T : class, new()
     {
-
-        public 
-
-
+        //public
     }
 
-
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
-
-
         }
     }
 }

@@ -30,6 +30,8 @@ namespace CoreConsole
             {
                 Console.WriteLine(ex.Message + ex.StackTrace);
             }
+
+            Console.ReadLine();
         }
     }
 

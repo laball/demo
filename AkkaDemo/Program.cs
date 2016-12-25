@@ -7,7 +7,6 @@ using Akka.Actor;
 
 namespace AkkaDemo
 {
-
     public class GreetingMessage
     {
         public string Name { get; set; }
@@ -17,13 +16,18 @@ namespace AkkaDemo
     {
         public GreetingActor()
         {
-            Receive<GreetingMessage>(c => { Console.WriteLine("Hello " + c.Name); });
+            Receive<GreetingMessage>(HanleGreetingMessage, null);
+        }
+
+        protected void HanleGreetingMessage(GreetingMessage message)
+        {
+            Console.WriteLine(string.Format("Greeting :{0}", message.Name));
         }
     }
 
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var system = ActorSystem.Create("Test");
 

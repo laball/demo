@@ -99,6 +99,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.PlayWithAkka.Common",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.PlayWithAkka.Server", "Event.PlayWithAkka.Server\Event.PlayWithAkka.Server.csproj", "{C77A5F1F-85C1-4172-81E2-ECE131D38600}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkkaWebApiDemo", "AkkaWebApiDemo\AkkaWebApiDemo.csproj", "{716A9A3E-37AB-4FE4-8B85-45F327873E0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -249,6 +251,10 @@ Global
 		{C77A5F1F-85C1-4172-81E2-ECE131D38600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C77A5F1F-85C1-4172-81E2-ECE131D38600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C77A5F1F-85C1-4172-81E2-ECE131D38600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{716A9A3E-37AB-4FE4-8B85-45F327873E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{716A9A3E-37AB-4FE4-8B85-45F327873E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{716A9A3E-37AB-4FE4-8B85-45F327873E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{716A9A3E-37AB-4FE4-8B85-45F327873E0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -277,5 +283,6 @@ Global
 		{D526FE7A-A3CC-49E3-9372-7E372878B5DF} = {236194DD-C563-43BE-B599-A21DF8BA2531}
 		{ABDF812D-91F7-48E2-8ADA-4F8E0F73F283} = {236194DD-C563-43BE-B599-A21DF8BA2531}
 		{C77A5F1F-85C1-4172-81E2-ECE131D38600} = {236194DD-C563-43BE-B599-A21DF8BA2531}
+		{716A9A3E-37AB-4FE4-8B85-45F327873E0A} = {602D12F9-3E47-433D-B74A-D50730C971E0}
 	EndGlobalSection
 EndGlobal

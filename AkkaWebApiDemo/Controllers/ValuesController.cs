@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using Akka.Actor;
+using AkkaWebApiDemo.Akka;
 
 namespace AkkaWebApiDemo.Controllers
 {
-    [Authorize]
+    //[Authorize]
+
+    [RoutePrefix("api/Values")]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -36,5 +41,15 @@ namespace AkkaWebApiDemo.Controllers
         public void Delete(int id)
         {
         }
+
+        // GET api/values/{name}
+
+        [Route("GetName/{name}")]
+        public async Task<string> GetName(string name)
+        {
+            var str = await SystemActors.DemoActor.Ask<string>(new DemoMessage {Name = name } , TimeSpan.FromSeconds(1));
+            return str;
+        }
+
     }
 }

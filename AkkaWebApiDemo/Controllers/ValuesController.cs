@@ -47,7 +47,8 @@ namespace AkkaWebApiDemo.Controllers
         [Route("GetName/{name}")]
         public async Task<string> GetName(string name)
         {
-            var str = await SystemActors.DemoActor.Ask<string>(new DemoMessage {Name = name } , TimeSpan.FromSeconds(1));
+            var message = new DemoMessage { Name = name };
+            var str = await SystemActors.DemoActor.Ask<string>(message);
             return str;
         }
 

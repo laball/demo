@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using MassTransit.RabbitMqTransport.Configuration;
 
 namespace MassTransitDemo
 {
@@ -19,18 +20,18 @@ namespace MassTransitDemo
                     h.Password(RabbitMQPassword);
                 });
 
+                config.Durable = true;
+                config.UseRateLimit(10, TimeSpan.FromSeconds(1));
+                config.UseConcurrencyLimit(100);
+                config.UseRetry(Retry.Interval(3, TimeSpan.FromMinutes(1)));
+
                 config.ReceiveEndpoint(host, "queue_test", e =>
                 {
-                    e.Consumer(() => new MessageConsumer());
-                });
+                    e.Consumer(() => new MessageConsumer(), x =>
+                    {
 
-                //config.ReceiveEndpoint(host, "queue_test", endPoint =>
-                //{
-                //    endPoint.Handler<MyMessage>(async context =>
-                //    {
-                //        await Console.Out.WriteLineAsync($"Received: {context.Message.Value}");
-                //    });
-                //});
+                    });
+                });
             });
 
             using (bus.Start())

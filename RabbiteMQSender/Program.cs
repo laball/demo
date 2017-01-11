@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using RabbitMQ.Client.Exceptions;
 
 namespace RabbiteMQSender
 {
@@ -23,7 +24,9 @@ namespace RabbiteMQSender
         {
             Initialize();
 
-            channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
+
+
+            channel.QueueDeclare(queue: "hello", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
             var task = Task.Factory.StartNew(SendMessagePerSecond);
             task.ContinueWith((tsk) =>
@@ -65,8 +68,18 @@ namespace RabbiteMQSender
                 VirtualHost = "/"
             };
 
-            connection = factory.CreateConnection();
-            channel = connection.CreateModel();
+            try
+            {
+                connection = factory.CreateConnection();
+                channel = connection.CreateModel();
+            }
+            catch (BrokerUnreachableException brokerEx)
+            {
+
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         static void UnInitialize()

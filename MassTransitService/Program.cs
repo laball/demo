@@ -15,7 +15,7 @@ namespace MassTransitService
             {
                 config.Service<GreetingServer>(server =>
                 {
-                    server.ConstructUsing(name => new GreetingServer());
+                    server.ConstructUsing(factory => new GreetingServer());
                     server.WhenStarted(s => s.Start());
                     server.WhenStopped(s => s.Stop());
                 });

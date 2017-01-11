@@ -18,9 +18,6 @@ namespace ExcelDemo
     {
         public string Mobile { get; set; }
         public string Code { get; set; }
-        public string Name1 { get; set; }
-
-        public DateTime DateFinalExamed { get; set; }
     }
 
     class Program
@@ -41,8 +38,8 @@ namespace ExcelDemo
             HZ_Conn = new SqlConnection(HZ_ConnectionString);
             HZ_Conn.Open();
 
-            //DC_Conn = new SqlConnection(DC_ConnectionString);
-            //DC_Conn.Open();
+            DC_Conn = new SqlConnection(DC_ConnectionString);
+            DC_Conn.Open();
 
             var workbook = new XLWorkbook();
             var worksheet = workbook.Worksheets.Add("Sheet1");
@@ -55,25 +52,17 @@ namespace ExcelDemo
 
             //黎波，刘述正，刘倩倩,
             //var mobiles = new string[] { "15900860546", "17783055953","15601815186"};
-            //var mobiles = new Model[]
-            //{
-            //    new Model { Mobile = "15900860546", Code = "001",Name1 = "111" },
-            //    new Model { Mobile = "17783055953", Code = "001",Name1 = "111" },
-            //    new Model { Mobile = "15601815186", Code = "001",Name1 = "111" }
-            //};
-            var mobiles = HZ_Conn.Query<Model>("  SELECT   DISTINCT   t.Mobile,t.Name1,t.Code,t.DateFinalExamed FROM [dbo].[Sheet1$] t  WHERE t.Mobile is NOT NULL");//distinct
+            var mobiles = HZ_Conn.Query<Model>("SELECT   DISTINCT   t.Mobile,t.Code FROM [dbo].[Sheet1$] t  WHERE t.Mobile is NOT NULL");//distinct
 
             var shortLinkProxy = SortLinkServerProxy.ShareInstance();
 
             var time = DateTime.Now;
             var sms = (from c in mobiles
-                       where !string.IsNullOrEmpty(c.Mobile) && Regex.Match(c.Mobile, "1[2|3|5|7|8|][0-9]{9}").Success
+                       where !string.IsNullOrEmpty(c) && Regex.Match(c, "1[2|3|5|7|8|][0-9]{9}").Success
                        select new
                        {
-                           mobile = c.Mobile,
-                           sms = shortLinkProxy.getSortLink(string.Format(url, 1, c.Mobile, c.Code)) + " ",
-                           name = c.Name1,
-                           time = c.DateFinalExamed
+                           mobile = c,
+                           sms = shortLinkProxy.getSortLink(string.Format(url, 1, c, deptCode)) + " "
                        }).ToList();
 
             Trace.WriteLine(string.Format("cost:{0}", DateTime.Now.Subtract(time).TotalSeconds));
@@ -84,14 +73,12 @@ namespace ExcelDemo
             foreach (var item in sms)
             {
                 worksheet.Cell(rowStart, columnStart).Value = item.mobile;
-                worksheet.Cell(rowStart, columnStart + 1).Value = "【" + item.name + "】您的体检报告于" + item.time.Month + "月" + item.time.Day + "日（总检时间）已完成，";
+                worksheet.Cell(rowStart, columnStart + 1).Value = "【新乡第一人民医院】温馨提示,您的体检报告已完成，查看您的健康状况及阳性指标，永久保存报告详情请点击";
                 worksheet.Cell(rowStart, columnStart + 2).Value = item.sms + " 退订回N";
-                //worksheet.Cell(rowStart, columnStart + 3).Value = item.sms;
+                worksheet.Cell(rowStart, columnStart + 3).Value = item.sms;
 
                 rowStart++;
             }
-
-            Console.WriteLine("end");
 
             workbook.SaveAs("HelloWorld.xlsx");
         }

@@ -25,7 +25,6 @@ namespace EFDemo
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<STATDAILY> STATDAILY { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<SudentClass> SudentClass { get; set; }

@@ -23,7 +23,7 @@ namespace EFDemo
 
 
 
-            var items = new teseEntities().STATDAILY.First();
+            //var items = new teseEntities().STATDAILY.First();
 
             Console.ReadLine();
         }

@@ -5,11 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="009cd8cfdd2d4dea8828058b5361dd44" Name="Diagram1">
-        <EntityTypeShape EntityType="teseModel.STATDAILY" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="teseModel.Class" Width="1.5" PointX="5.625" PointY="6.625" />
-        <EntityTypeShape EntityType="teseModel.Student" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="teseModel.SudentClass" Width="1.5" PointX="5.625" PointY="3.875" />
-        <EntityTypeShape EntityType="teseModel.Teacher" Width="1.5" PointX="3.375" PointY="4" />
+        <EntityTypeShape EntityType="teseModel.Class" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="teseModel.Student" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="teseModel.SudentClass" Width="1.5" PointX="3" PointY="3.875" FillColor="255, 128, 128" IsExpanded="true" />
+        <EntityTypeShape EntityType="teseModel.Teacher" Width="1.5" PointX="0.75" PointY="4" />
         <AssociationConnector Association="teseModel.FK__Class__TeacherID__60A75C0F" />
         <AssociationConnector Association="teseModel.FK__SudentCla__Suden__6477ECF3" />
         <AssociationConnector Association="teseModel.FK__SudentCla__Teach__6383C8BA" />

@@ -1,37 +1,43 @@
 using System;
 using Dapper;
 using Newtonsoft.Json;
+using log4net;
+using System.IO;
+using log4net.Repository;
+using System.Threading.Tasks;
+
+//使用XmlConfiguratorAttribute设置log4net比较方便，该设置不仅仅可以在AssemblyInfo.cs文件中使用
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 namespace CoreConsole
 {
     public class Program
     {
-        public const string ConnectionString = "server='Lee';database='tese';uid='sa';pwd ='@LiBo#8923052'";
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        public const string ConnectionString = "server='localhost';database='tese';uid='sa';pwd ='libo8923052'";
 
         public static void Main(string[] args)
         {
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;           
+
             try
             {
-                using (var connection = new System.Data.SqlClient.SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-
-                    var sql = "select * FROM People";
-
-                    var people = connection.Query<People>(sql);
-
-                    foreach (var person in people)
-                    {
-                        Console.WriteLine(JsonConvert.SerializeObject(person));
-                    }
-                }
+                log4netTest.Test();
+                ConfigurationTest.JsonTest();
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                Console.WriteLine(ex.Message + ex.StackTrace);
-            }
+                log.Info(ex.StackTrace);
+            }            
 
             Console.ReadLine();
+        }
+
+        private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            log.Error(e.Exception.StackTrace);
+            e.SetObserved();
         }
     }
 

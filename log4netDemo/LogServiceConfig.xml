@@ -102,7 +102,7 @@
 
   <appender name="TraceAppender" type="log4net.Appender.TraceAppender">
     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      <conversionPattern value="%d{HH:mm:ss fff} %appdomain Thread：%-3thread %-5level %F %L %message %newline" />
     </layout>
   </appender>
 

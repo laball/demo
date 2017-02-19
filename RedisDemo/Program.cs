@@ -23,6 +23,7 @@ namespace RedisDemo
     {
         private static RedisClient redisClient = new RedisClient("192.168.1.15", 6379);
 
+        //ServiceStack.Redis从V4开始商业化，收到各种限制，一般使用3.9.71，V3的最后一个版本。
         private static void Main(string[] args)
         {
             var keys = redisClient.GetAllKeys();

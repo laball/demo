@@ -15,39 +15,31 @@ namespace CoreConsole
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-        public const string ConnectionString = "server='localhost';database='tese';uid='sa';pwd ='libo8923052'";
-
         public static void Main(string[] args)
         {
-            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;           
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
 
             try
             {
-                log4netTest.Test();
+                //log4netTest.Test();
                 ConfigurationTest.JsonTest();
+                //ConfigurationTest.XmlTest();
+
+                //AutofacTest.Test();
+
             }
             catch (System.Exception ex)
             {
                 log.Info(ex.StackTrace);
-            }            
+            }
 
             Console.ReadLine();
         }
 
         private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            log.Error(e.Exception.StackTrace);
+            log.Error("Task Error.", e.Exception);
             e.SetObserved();
         }
-    }
-
-    public class People
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public DateTime CreationTime { get; set; }
-        public DateTime? DeletionTime { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime? LastModificationTime { get; set; }
     }
 }

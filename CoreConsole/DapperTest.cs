@@ -29,4 +29,14 @@ namespace CoreConsole
             }
         }
     }
+
+    public class People
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public DateTime CreationTime { get; set; }
+        public DateTime? DeletionTime { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime? LastModificationTime { get; set; }
+    }
 }

@@ -19,7 +19,7 @@ namespace ExcelDemo
         /// <summary>
         /// 个性化建议
         /// </summary>
-        public IEnumerable<AdviceItem> advices { get; set; }
+        public IList<Advice> advices { get; set; }
         /// <summary>
         /// 个性化建议图片地址
         /// </summary>
@@ -28,10 +28,6 @@ namespace ExcelDemo
         /// 受检人出生日期
         /// </summary>
         public string birthday { get; set; }
-        /// <summary>
-        /// 生活习惯
-        /// </summary>
-        public string custom { get; set; }
         /// <summary>
         /// 背景知识HTML5 url
         /// </summary>
@@ -51,7 +47,7 @@ namespace ExcelDemo
         /// <summary>
         /// 检测项目
         /// </summary>
-        public IEnumerable<CheckItem> items { get; set; }
+        public IList<CheckItem> items { get; set; }
         /// <summary>
         /// 受检人姓名
         /// </summary>
@@ -82,9 +78,15 @@ namespace ExcelDemo
     /// <summary>
     /// 个性化建议
     /// </summary>
-    public class AdviceItem
+    public class Advice
     {
+        /// <summary>
+        /// 生活习惯
+        /// </summary>
         public string custom { get; set; }
+        /// <summary>
+        /// 生活习惯改善建议
+        /// </summary>
         public string desc { get; set; }
     }
 
@@ -100,7 +102,7 @@ namespace ExcelDemo
         /// <summary>
         /// 项目图片url
         /// </summary>
-        public string itemDadge { get; set; }
+        public string itemBadge { get; set; }
         /// <summary>
         /// 检测套餐中对应检测单项名称
         /// </summary>
@@ -108,21 +110,27 @@ namespace ExcelDemo
         /// <summary>
         /// 预防建议详细信息
         /// </summary>
-        public IEnumerable<PrecautionDetailItem> precautionDetails { get; set; }
+        public IList<Precaution> precautions { get; set; }
         /// <summary>
         /// 参考文献
         /// </summary>
-        public IEnumerable<string> refs { get; set; }
+        public IList<string> refs { get; set; }
+        /// <summary>
+        /// 结果
+        /// </summary>
         public Risk risk { get; set; }
-        public IEnumerable<SnpDescItem> precautionBadge { get; set; }
-        public IEnumerable<SnpResultItem> snpResults { get; set; }
+        public IList<SnpDesc> snpDescs { get; set; }
+        public IList<SnpResult> snpResults { get; set; }
         /// <summary>
         /// 结果解读
         /// </summary>
         public string snpSummary { get; set; }
     }
 
-    public class PrecautionDetailItem
+    /// <summary>
+    /// 预防建议详细信息项
+    /// </summary>
+    public class Precaution
     {
         /// <summary>
         /// 详情
@@ -134,34 +142,61 @@ namespace ExcelDemo
         public string precautionBadge { get; set; }
     }
 
+    /// <summary>
+    /// 结果
+    /// </summary>
     public class Risk
     {
         /// <summary>
         /// 危险等级图片url
+        /// LOW,LOW_PLUS,NORMAL,HIGH_MINUS,HIGH
+        /// </summary>
+        public string level { get; set; }
+        /// <summary>
+        /// 危险等级图片url
         /// </summary>
         public string levelBadge { get; set; }
-        /// <summary>
-        /// 危险等级
-        /// </summary>
-        public string levelText { get; set; }
         /// <summary>
         /// 风险描述
         /// </summary>
         public string riskDesc { get; set; }
     }
 
-    public class SnpDescItem
+    public class SnpDesc
     {
+        /// <summary>
+        /// SNP对应的基因编号
+        /// </summary>
         public string geneSerial { get; set; }
+        /// <summary>
+        /// 当前单项选择该SNP的解析
+        /// </summary>
         public string snpDesc { get; set; }
     }
 
-    public class SnpResultItem
+    public class SnpResult
     {
+        /// <summary>
+        /// 基因型
+        /// TT，CG等，当前位置的碱基序列
+        /// </summary>
         public string geneCode { get; set; }
+        /// <summary>
+        /// 该基因型对当前疾病的影响
+        /// →：无影响；↑：增加发病风险；：↓降低发病风险
+        /// </summary>
         public string geneEffect { get; set; }
+        /// <summary>
+        /// 该基因型在普通人群中出现的百分比
+        /// </summary>
         public string geneFrequencey { get; set; }
+        /// <summary>
+        /// 位置在当前基因中的编号
+        /// </summary>
         public string genePoint { get; set; }
+        /// <summary>
+        /// 基因编号
+        /// </summary>
         public string geneSerial { get; set; }
     }
 

@@ -4,20 +4,33 @@ using Microsoft.Extensions.Configuration;
 
 namespace CoreConsole
 {
-    public class ConfigurationTest
+    public static class ConfigurationTest
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ConfigurationTest));
 
         public static void JsonTest()
         {
             var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("App.json");
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("App.json");
 
             var configuration = builder.Build();
 
             log.InfoFormat("Name:{0}", configuration["Name"]);
             log.InfoFormat("ConnectionString:{0}", configuration["ConnectionString"]);
         }
+
+        public static void XmlTest()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddXmlFile("App.config");
+
+            var configuration = builder.Build();
+
+            log.InfoFormat("Name:{0}", configuration["Name"]);
+            log.InfoFormat("ConnectionString:{0}", configuration["ConnectionString"]);
+        }
+
     }
 }

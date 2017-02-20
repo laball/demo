@@ -4,9 +4,9 @@ using log4net;
 
 namespace CoreConsole
 {
-    public static class MsSQLTest
+    public static class MSSQLServerTest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(MsSQLTest));
+        private static readonly ILog log = LogManager.GetLogger(typeof(MSSQLServerTest));
 
         public const string ConnectionString = "server='localhost';database='tese';uid='sa';pwd ='libo8923052'";
 

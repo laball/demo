@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ServiceStack.Redis;
@@ -19,23 +21,191 @@ namespace RedisDemo
         public IList<double> dNums { get; set; }
     }
 
+    /// <summary>
+    /// 修复ServiceStack.Redis V3 中AddRangeToList方法性能问题
+    /// </summary>
+    public static class RedisExtentions
+    {
+        private static MethodInfo methodCache;
+
+        private static readonly object lockRoot = new object();
+
+        private static MethodInfo MethodCache
+        {
+            get
+            {
+                if (methodCache == null)
+                {
+                    lock (lockRoot)
+                    {
+                        if (methodCache == null)
+                        {
+                            methodCache = typeof(RedisClient).GetMethod("SendExpectLong", BindingFlags.NonPublic | BindingFlags.Instance);
+                        }
+                    }
+                }
+
+                return methodCache;
+            }
+        }
+
+        public static void AddRangeToListEx(this RedisClient redis, string listId, List<string> values)
+        {
+            AddRangeToListEx(redis as IRedisClient, listId, values);
+        }
+
+        public static void AddRangeToListEx(this IRedisClient redis, string listId, List<string> values)
+        {
+            var bbb = values.Select(c => Encoding.UTF8.GetBytes(c)).ToArray();
+            byte[][] sss = MergeCommandWithArgs(Commands.RPush, Encoding.UTF8.GetBytes(listId), bbb);
+            long ret = (long)MethodCache.Invoke(redis, new object[] { sss });
+        }
+
+        private static byte[][] MergeCommandWithArgs(byte[] cmd, byte[] firstArg, params byte[][] args)
+        {
+            byte[][] bufferArray = new byte[2 + args.Length][];
+            bufferArray[0] = cmd;
+            bufferArray[1] = firstArg;
+            for (int i = 0; i < args.Length; i++)
+            {
+                bufferArray[i + 2] = args[i];
+            }
+            return bufferArray;
+        }
+    }
+
     internal class Program
     {
-        private static RedisClient redisClient = new RedisClient("192.168.1.15", 6379);
+        //private static RedisClient redis = new RedisClient("127.0.0.1", 6379);
+        private static IRedisClient redis;// = new RedisClient("Haozhuo2015@10.140.234.217", 6379);
+
+        public static string uri = "Haozhuo2015@10.140.234.217";
+        public static PooledRedisClientManager pool;
+
 
         //ServiceStack.Redis从V4开始商业化，收到各种限制，一般使用3.9.71，V3的最后一个版本。
         private static void Main(string[] args)
         {
-            var keys = redisClient.GetAllKeys();
+            //var times = 10;
+            //var ids = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+            //var repeatIds = new List<int>();
+            //for (int i = 0; i < times; i++)
+            //{
+            //    repeatIds.AddRange(ids);
+            //}
+            pool = new PooledRedisClientManager(new string[] { uri }, new string[] { uri },
+                                new RedisClientManagerConfig()
+                                {
+                                    AutoStart = true,
+                                    DefaultDb = 1,
+                                    MaxWritePoolSize = 10,
+                                    MaxReadPoolSize = 10,
+                                });
+
+            redis = pool.GetClient();
+
+
+            SortedSetTest1();
+
+            //SortedSetTest2();
+            Console.WriteLine("end");
+            Console.ReadLine();
+        }
+
+        public static void SortedSetTest1()
+        {
+            var keys = pool.GetClient().GetAllKeys();
+
+            var str = "A,B,C,D,E,F,A,B,C,D,E,F,A,B,C,D,E,F,A,B,C,D,E,F";
+            //var doctorIDs = new List<string>(str.Split(','));
+
+            int count = 10;
+
+            var doctorIDRepeatTime = 10000;
+            var doctorIDs = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            var repeatIds = new List<int>();
+            for (int i = 0; i < doctorIDRepeatTime; i++)
+            {
+                repeatIds.AddRange(doctorIDs);
+            }
+
+            var ids = repeatIds.Select(c => c.ToString()).ToList();
+
+            var watch = new Stopwatch();
+
+            for (int i = 0; i < count; i++)
+            {
+                var key = i.ToString("");
+
+                watch.Start();
+                redis.AddRangeToList(key, ids);
+                watch.Stop();
+            }
+
+
+            Console.WriteLine(string.Format("AddRangeToList cost:{0}",watch.ElapsedMilliseconds));
+
+            watch = new Stopwatch();
+
+            for (int i = 0; i < count; i++)
+            {
+                var key = "_"+ i.ToString();
+
+                watch.Start();
+                redis.AddRangeToListEx(key, ids);
+                watch.Stop();
+            }
+
+            Console.WriteLine(string.Format("AddRangeToListEx cost:{0}", watch.ElapsedMilliseconds));
+
+            //创建机构可分配健管师ID缓存
+            //var setid = "DoctorsToAssign_125";
+            //redis.AddRangeToListEx(setid, ids);
+            //redis.ExpireEntryIn(setid, TimeSpan.FromSeconds(30));
+
+            //redis.Remove(setid);
+
+
+            //从缓存中获取一个健管师ID
+            //var dcotorId = redis.PopItemFromList(setid);
+
+            //如果分配失败，则将健管师ID重新放入缓存中
+            //redis.AddItemToList(setid, "F");
+
+        }
+
+        public static void SortedSetTest2()
+        {
+            var str = "A,B,C";
+            var doctorIDs = new List<string>(str.Split(','));
+
+            //创建机构可分配健管师ID缓存
+            var setid = "DoctorsToAssign_4";
+            redis.AddRangeToList(setid, doctorIDs);
+            //redis.ExpireEntryIn(setid, TimeSpan.FromSeconds(30));
+
+
+            //从缓存中获取一个健管师ID
+            var dcotorId = redis.PopItemFromList(setid);
+
+            //如果分配失败，则将健管师ID重新放入缓存中
+            //redis.AddItemToList(setid, "F");
+
+        }
+
+        public static void Test1()
+        {
+            var keys = redis.GetAllKeys();
 
             foreach (var key in keys)
             {
                 Trace.WriteLine(string.Format("Key:{0}", key));
             }
 
-            var value = redisClient.Get<string>("name");
+            var value = redis.Get<string>("name");
 
-            redisClient.Add("expiresKey", "125", new TimeSpan(0, 0, 2));
+            redis.Add("expiresKey", "125", new TimeSpan(0, 0, 2));
 
             var data = new ComplexData
             {
@@ -48,15 +218,15 @@ namespace RedisDemo
             var min = DateTime.MinValue;
             var max = DateTime.MaxValue;
 
-            redisClient.Add("ComplexData", data);
+            redis.Add("ComplexData", data);
 
             Task.Factory.StartNew(() =>
             {
                 Thread.Sleep(5000);
 
-                if (redisClient.ContainsKey("expiresKey"))
+                if (redis.ContainsKey("expiresKey"))
                 {
-                    var vl = redisClient.Get<string>("expiresKey");
+                    var vl = redis.Get<string>("expiresKey");
                     Trace.WriteLine(vl);
                 }
                 else
@@ -65,9 +235,7 @@ namespace RedisDemo
                 }
             });
 
-            var allKeys = redisClient.GetAllKeys();
-
-            Console.ReadLine();
+            var allKeys = redis.GetAllKeys();
         }
     }
 }

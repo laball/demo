@@ -22,8 +22,9 @@ namespace CoreConsole
             try
             {
                 //log4netTest.Test();
-                ConfigurationTest.JsonTest();
+                //ConfigurationTest.JsonTest();
                 //ConfigurationTest.XmlTest();
+                EFCoreSQLServerTest.Test();
 
                 //AutofacTest.Test();
 

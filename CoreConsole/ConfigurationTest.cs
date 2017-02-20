@@ -27,9 +27,11 @@ namespace CoreConsole
                 .AddXmlFile("App.config");
 
             var configuration = builder.Build();
+            var secton = configuration.GetSection("configuration");
+            var secton2 =  secton.GetSection("appSettings");
 
-            log.InfoFormat("Name:{0}", configuration["Name"]);
-            log.InfoFormat("ConnectionString:{0}", configuration["ConnectionString"]);
+            log.InfoFormat("key_1:{0}", secton["key_1"]);
+            //log.InfoFormat("ConnectionString:{0}", configuration["ConnectionString"]);
         }
 
     }

@@ -31,7 +31,6 @@ namespace CoreConsole
                     newStudent.BirthDay = DateTime.Now;
                 }
 
-
                 db.SaveChanges();
 
                 var students = db.Student;

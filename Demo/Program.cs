@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Demo
 {
@@ -19,6 +20,8 @@ namespace Demo
     {
         private static void Main(string[] args)
         {
+            var ddd = HttpUtility.UrlEncode("河南省直三院", Encoding.UTF8).ToUpper();
+
             var date = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59");
             Console.ReadLine();
         }

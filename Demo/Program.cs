@@ -8,50 +8,77 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Threading;
 
 namespace Demo
 {
-    public class NullInstance<T> where T : class, new()
-    {
-        public static readonly T Instance;
-    }
-
     internal class Program
     {
         private static void Main(string[] args)
         {
-            var ddd = HttpUtility.UrlEncode("河南省直三院", Encoding.UTF8).ToUpper();
+            Task.Factory.StartNew(() =>
+            {
+                var ss1 = new MyClass();
+                var ss2 = new MyClass();
 
-            var date = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59");
+                using (var ss3 = new MyClass())
+                {
+
+                }
+            });
+
+            Console.WriteLine("sleep 1s ");
+
+            Thread.Sleep(1000);
+
+            GC.Collect();
+
             Console.ReadLine();
         }
+    }
 
-
-        private static void ReadFileTest()
+    public class MyClass : IDisposable
+    {
+        static MyClass()
         {
-            StreamReader reader = new StreamReader("CCS_20161228.log");
-            StreamWriter writer = new StreamWriter("111.txt");
-
-            var sql = "INSERT INTO S_MessagePush (Type,Cost) VALUES('{0}',{1})";
-            var line = reader.ReadLine();
-            var count = 0;
-            while (line != null)
-            {
-                var fields = line.Split(' ');
-                if (fields != null && fields.Length >= 2)
-                {
-                    writer.WriteLine(string.Format(sql, fields[0], fields[1]));
-                }
-
-                line = reader.ReadLine();
-                count++;
-            }
-
-            writer.Close();
-            reader.Close();
-
-            Console.WriteLine("end " + count);
+            Console.WriteLine("static constructor");
         }
 
+        public MyClass()
+        {
+            Console.WriteLine("default constructor");
+        }
+
+        ~MyClass()
+        {
+            Dispose(false);
+            Console.WriteLine("~ constructor");
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!m_disposed)
+            {
+                if (disposing)
+                {
+                    Console.WriteLine("disposing:true");
+
+                    // Release managed resources
+                }
+
+                // Release unmanaged resources
+
+                m_disposed = true;
+            }
+        }
+
+        private bool m_disposed;
     }
+
 }

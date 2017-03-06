@@ -1,4 +1,4 @@
 ﻿{
   "Name": "Lee",
-  "ConnectionString": "server='localhost';database='tese';uid='sa';pwd ='libo8923052'"
+  "ConnectionString": "server='localhost';database='test';uid='sa';pwd ='libo8923052'"
 }

@@ -1,0 +1,1 @@
+﻿DB First Command:dotnet ef dbcontext scaffold "server='localhost';database='test';uid='sa';pwd ='libo8923052'"  Microsoft.EntityFrameworkCore.SqlServer

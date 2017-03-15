@@ -6,79 +6,51 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using System.Threading;
 
 namespace Demo
 {
+    public class NullInstance<T> where T : class, new()
+    {
+        public static readonly T Instance;
+    }
+
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Task.Factory.StartNew(() =>
-            {
-                var ss1 = new MyClass();
-                var ss2 = new MyClass();
+            var ddd = HttpUtility.UrlEncode("河南省直三院", Encoding.UTF8).ToUpper();
 
-                using (var ss3 = new MyClass())
-                {
-
-                }
-            });
-
-            Console.WriteLine("sleep 1s ");
-
-            Thread.Sleep(1000);
-
-            GC.Collect();
-
+            var date = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59");
             Console.ReadLine();
         }
-    }
 
-    public class MyClass : IDisposable
-    {
-        static MyClass()
+        private static void ReadFileTest()
         {
-            Console.WriteLine("static constructor");
-        }
+            StreamReader reader = new StreamReader("CCS_20161228.log");
+            StreamWriter writer = new StreamWriter("111.txt");
 
-        public MyClass()
-        {
-            Console.WriteLine("default constructor");
-        }
-
-        ~MyClass()
-        {
-            Dispose(false);
-            Console.WriteLine("~ constructor");
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (!m_disposed)
+            var sql = "INSERT INTO S_MessagePush (Type,Cost) VALUES('{0}',{1})";
+            var line = reader.ReadLine();
+            var count = 0;
+            while (line != null)
             {
-                if (disposing)
+                var fields = line.Split(' ');
+                if (fields != null && fields.Length >= 2)
                 {
-                    Console.WriteLine("disposing:true");
-
-                    // Release managed resources
+                    writer.WriteLine(string.Format(sql, fields[0], fields[1]));
                 }
 
-                // Release unmanaged resources
-
-                m_disposed = true;
+                line = reader.ReadLine();
+                count++;
             }
+
+            writer.Close();
+            reader.Close();
+
+            Console.WriteLine("end " + count);
         }
-
-        private bool m_disposed;
     }
-
 }

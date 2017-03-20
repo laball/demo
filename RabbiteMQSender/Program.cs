@@ -12,7 +12,7 @@ using RabbitMQ.Client.Exceptions;
 
 namespace RabbiteMQSender
 {
-    static class Program
+    internal static class Program
     {
         private static ConnectionFactory factory;
         private static IConnection connection;
@@ -20,11 +20,9 @@ namespace RabbiteMQSender
 
         private static int sID;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Initialize();
-
-
 
             channel.QueueDeclare(queue: "hello", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
@@ -40,7 +38,7 @@ namespace RabbiteMQSender
             Console.ReadLine();
         }
 
-        static void SendMessagePerSecond()
+        private static void SendMessagePerSecond()
         {
             while (true)
             {
@@ -58,7 +56,7 @@ namespace RabbiteMQSender
             }
         }
 
-        static void Initialize()
+        private static void Initialize()
         {
             factory = new ConnectionFactory
             {
@@ -75,14 +73,13 @@ namespace RabbiteMQSender
             }
             catch (BrokerUnreachableException brokerEx)
             {
-
             }
             catch (Exception ex)
             {
             }
         }
 
-        static void UnInitialize()
+        private static void UnInitialize()
         {
             channel.Close();
             connection.Close();

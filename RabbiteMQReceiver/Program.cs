@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace RabbiteMQReceiver
 {
-    static class Program
+    internal static class Program
     {
         public const string ExchangeName = "test.exchange";
         public const string QueueName = "test.queue";
@@ -20,7 +20,7 @@ namespace RabbiteMQReceiver
         public static IConnection Connection;
         public static IModel ReceiveChannel;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var factory = new ConnectionFactory
             {
@@ -43,12 +43,10 @@ namespace RabbiteMQReceiver
             //var factory = new ConnectionFactory { HostName = "localhost", UserName = "root", Password = "root", VirtualHost = "/" };
             //var factory = new ConnectionFactory { HostName = "10.50.50.22", UserName = "hzadmin", Password = "a1234567", VirtualHost = "/" };
 
-
             //exchange type: fanout,direct,topic,headers
             //fanout:广播,消息后会将消息广播给所有绑定到它上面的队列
 
             channel.ExchangeDeclare("test", "direct", true);
-
 
             //durable:持久化
             //exclusive:程序退出后被自动删除
@@ -75,14 +73,13 @@ namespace RabbiteMQReceiver
 
             //ReceiveChannel.ExchangeDeclare(ExchangeName,"direct",true,false,null);
             //ReceiveChannel.QueueDeclare(QueueName,true,false,false,null);
-            //ReceiveChannel.QueueBind(QueueName,ExchangeName,"");
+            ReceiveChannel.QueueBind(QueueName, ExchangeName, "");
 
             //var consumer = new EventingBasicConsumer(ReceiveChannel);
             //consumer.Received += consumer_Received;
 
             //Console.ReadLine();
         }
-
 
         public static T Deserialize<T>(this byte[] byteData)
         {
@@ -93,8 +90,7 @@ namespace RabbiteMQReceiver
             }
         }
 
-
-        static void Inite()
+        private static void Inite()
         {
             RabbiteMQSection MqSection = ConfigurationManager.GetSection("RabbitMQ") as RabbiteMQSection;
 
@@ -134,11 +130,10 @@ namespace RabbiteMQReceiver
 
             foreach (QueueElement queue in MqSection.Queues)
             {
-
             }
         }
 
-        static void consumer_Received(object sender, BasicDeliverEventArgs e)
+        private static void consumer_Received(object sender, BasicDeliverEventArgs e)
         {
             using (var stream = new MemoryStream(e.Body, false))
             {
@@ -154,6 +149,5 @@ namespace RabbiteMQReceiver
             Connection = Factory.CreateConnection();
             ReceiveChannel = Connection.CreateModel();
         }
-
     }
 }

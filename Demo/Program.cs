@@ -12,26 +12,41 @@ using System.Threading;
 
 namespace Demo
 {
+
+    enum Color : byte
+    {
+        Red,
+        Green,
+        Blue,
+        Orange
+    }
+
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Task.Factory.StartNew(() =>
-            {
-                var ss1 = new MyClass();
-                var ss2 = new MyClass();
+            //char a = 'a';
+            //char z = 'z';
 
-                using (var ss3 = new MyClass())
-                {
+            //char[] chArray = new char[10000];
+            //Random rd = new Random();
 
-                }
-            });
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    chArray[i] = (char)rd.Next((int)(a),(int)(z));
+            //}
 
-            Console.WriteLine("sleep 1s ");
+            //var str = new string(chArray);
 
-            Thread.Sleep(1000);
 
-            GC.Collect();
+
+            int i = 5;
+            int j = 5;
+            if (Object.ReferenceEquals(i, j))
+                Console.WriteLine("Equal");
+            else
+                Console.WriteLine("Not Equal");
+
 
             Console.ReadLine();
         }

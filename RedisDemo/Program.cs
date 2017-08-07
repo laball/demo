@@ -21,62 +21,8 @@ namespace RedisDemo
         public IList<double> dNums { get; set; }
     }
 
-    /// <summary>
-    /// 修复ServiceStack.Redis V3 中AddRangeToList方法性能问题
-    /// </summary>
-    public static class RedisExtentions
-    {
-        private static MethodInfo methodCache;
-
-        private static readonly object lockRoot = new object();
-
-        private static MethodInfo MethodCache
-        {
-            get
-            {
-                if (methodCache == null)
-                {
-                    lock (lockRoot)
-                    {
-                        if (methodCache == null)
-                        {
-                            methodCache = typeof(RedisClient).GetMethod("SendExpectLong", BindingFlags.NonPublic | BindingFlags.Instance);
-                        }
-                    }
-                }
-
-                return methodCache;
-            }
-        }
-
-        public static void AddRangeToListEx(this RedisClient redis, string listId, List<string> values)
-        {
-            AddRangeToListEx(redis as IRedisClient, listId, values);
-        }
-
-        public static void AddRangeToListEx(this IRedisClient redis, string listId, List<string> values)
-        {
-            var bbb = values.Select(c => Encoding.UTF8.GetBytes(c)).ToArray();
-            byte[][] sss = MergeCommandWithArgs(Commands.RPush, Encoding.UTF8.GetBytes(listId), bbb);
-            long ret = (long)MethodCache.Invoke(redis, new object[] { sss });
-        }
-
-        private static byte[][] MergeCommandWithArgs(byte[] cmd, byte[] firstArg, params byte[][] args)
-        {
-            byte[][] bufferArray = new byte[2 + args.Length][];
-            bufferArray[0] = cmd;
-            bufferArray[1] = firstArg;
-            for (int i = 0; i < args.Length; i++)
-            {
-                bufferArray[i + 2] = args[i];
-            }
-            return bufferArray;
-        }
-    }
-
     internal class Program
     {
-        //private static RedisClient redis = new RedisClient("127.0.0.1", 6379);
         private static IRedisClient redis;// = new RedisClient("Haozhuo2015@10.140.234.217", 6379);
 
         public static string uri = "Haozhuo2015@10.140.234.217";
@@ -86,21 +32,15 @@ namespace RedisDemo
         //ServiceStack.Redis从V4开始商业化，收到各种限制，一般使用3.9.71，V3的最后一个版本。
         private static void Main(string[] args)
         {
-            //var times = 10;
-            //var ids = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-            //var repeatIds = new List<int>();
-            //for (int i = 0; i < times; i++)
-            //{
-            //    repeatIds.AddRange(ids);
-            //}
-            pool = new PooledRedisClientManager(new string[] { uri }, new string[] { uri },
-                                new RedisClientManagerConfig()
-                                {
-                                    AutoStart = true,
-                                    DefaultDb = 1,
-                                    MaxWritePoolSize = 10,
-                                    MaxReadPoolSize = 10,
-                                });
+            var config = new RedisClientManagerConfig()
+            {
+                AutoStart = true,
+                DefaultDb = 1,
+                MaxWritePoolSize = 10,
+                MaxReadPoolSize = 10,
+            };
+
+            pool = new PooledRedisClientManager(new string[] { uri }, new string[] { uri }, config);
 
             redis = pool.GetClient();
 
@@ -144,13 +84,13 @@ namespace RedisDemo
             }
 
 
-            Console.WriteLine(string.Format("AddRangeToList cost:{0}",watch.ElapsedMilliseconds));
+            Console.WriteLine(string.Format("AddRangeToList cost:{0}", watch.ElapsedMilliseconds));
 
             watch = new Stopwatch();
 
             for (int i = 0; i < count; i++)
             {
-                var key = "_"+ i.ToString();
+                var key = "_" + i.ToString();
 
                 watch.Start();
                 redis.AddRangeToListEx(key, ids);

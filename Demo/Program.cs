@@ -25,6 +25,8 @@ namespace Demo
 
             var date = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59");
             Console.ReadLine();
+
+            GC.Collect();
         }
 
         private static void ReadFileTest()

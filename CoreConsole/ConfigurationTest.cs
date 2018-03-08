@@ -1,6 +1,7 @@
-﻿using System.IO;
-using log4net;
+﻿using log4net;
 using Microsoft.Extensions.Configuration;
+using System.IO;
+using System.Linq;
 
 namespace CoreConsole
 {
@@ -27,10 +28,16 @@ namespace CoreConsole
                 .AddXmlFile("App.config");
 
             var configuration = builder.Build();
-            var secton = configuration.GetSection("configuration");
-            var secton2 =  secton.GetSection("appSettings");
+            var provider = configuration.Providers.FirstOrDefault();
+            var tt = string.Empty;
+            var keys = provider.TryGet("appSettings:add:key", out tt);
+            var cfgSection = configuration.GetSection("configuration");
+            var appSettingsSection =  cfgSection.GetSection("appSettings");
+            var addSection = appSettingsSection.GetChildren();
 
-            log.InfoFormat("key_1:{0}", secton["key_1"]);
+            var ddd = configuration.GetConnectionString("key_1");
+
+            log.InfoFormat("key_1:{0}", appSettingsSection["key_1"]);
             //log.InfoFormat("ConnectionString:{0}", configuration["ConnectionString"]);
         }
 

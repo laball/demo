@@ -9,11 +9,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
 using Dapper;
-using HZ.Interface;
 
 namespace ExcelDemo
 {
-
     public class Model
     {
         public string Mobile { get; set; }
@@ -23,9 +21,9 @@ namespace ExcelDemo
         public DateTime DateFinalExamed { get; set; }
     }
 
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var workbook = new XLWorkbook();
             var worksheet = workbook.Worksheets.Add("Sheet1");

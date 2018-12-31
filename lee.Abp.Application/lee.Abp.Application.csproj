@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Lee.Abp.Application</AssemblyName>
+    <RootNamespace>Lee.Abp.Application</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\Lee.Abp.Application.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="3.9.0" />
+    <PackageReference Include="Abp.AutoMapper" Version="3.9.0" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lee.Abp.Common\Lee.Abp.Common.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Core\Lee.Abp.Core.csproj" />
+    <ProjectReference Include="..\Lee.Abp.EntityFrameworkCore\Lee.Abp.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+        <script src="/jquery-1.10.2.js"></script>
+        <script src="/jquery.cookie.js"></script>
+    <script>
+            var options = {};
+            options.domain = 'localhost';
+            $.cookie('userID', '125',options);
+            console.log($.cookie("userID"));
+    </script>
+
+    <script src="/jquery.signalR-2.3.0.js"></script>
+    <script src="http://localhost:46294/signalr/hubs"></script>
+    <script src="/abp.js"></script>
+
+    <script>
+        $.connection.hub.url = "http://localhost:6186/signalr";
+        //必须要在引入或者初始化signalr之前，对以上属性进行设置；
+        //否则，连接的signalr将是当前域名和端口下的；
+
+        //有效
+        $.connection.hub.qs = {"qs_token":"qs_token_value"};
+
+    </script>
+
+    <script src="/abp.signalr.js"></script>
+
+    <script>
+
+
+
+        //var chatHub = $.connection.myChatHub; // Get a reference to the hub
+        var chatHub = $.connection.deviceMonitor; // Get a reference to the hub
+
+        chatHub.client.getMessage = function (message) { // Register for incoming messages
+            console.log('received message: ' + message);
+        };
+
+    </script>
+
+</body>
+</html>

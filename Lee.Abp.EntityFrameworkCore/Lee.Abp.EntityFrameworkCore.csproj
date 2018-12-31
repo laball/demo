@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="backup\**" />
+    <Compile Remove="Migrations\backup\**" />
+    <EmbeddedResource Remove="backup\**" />
+    <EmbeddedResource Remove="Migrations\backup\**" />
+    <None Remove="backup\**" />
+    <None Remove="Migrations\backup\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="backup.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Lee.Abp.Web\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="3.9.0" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="3.9.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.13" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lee.Abp.Common\Lee.Abp.Common.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Core.Common\Lee.Abp.Core.Common.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Core\Lee.Abp.Core.csproj" />
+  </ItemGroup>
+
+</Project>

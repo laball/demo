@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\Lee.Abp.Web.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Startup\Startup - 副本.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="3.9.0" />
+    <PackageReference Include="Abp.AspNetCore" Version="3.9.0" />
+    <PackageReference Include="Abp.AspNetCore.OData" Version="3.9.0" />
+    <PackageReference Include="Abp.AspNetCore.SignalR" Version="3.9.0" />
+    <PackageReference Include="Abp.AspNetCore.TestBase" Version="3.9.0" />
+    <PackageReference Include="Abp.AutoMapper" Version="3.9.0" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="3.9.0" />
+    <PackageReference Include="Abp.Dapper" Version="3.9.0" />
+    <PackageReference Include="Abp.ElasticSearch.Core" Version="0.1.2" />
+    <PackageReference Include="Abp.EntityFramework.Common" Version="3.9.0" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="3.9.0" />
+    <PackageReference Include="Abp.HangFire.AspNetCore" Version="3.9.0" />
+    <PackageReference Include="Abp.MongoDB" Version="3.9.0" />
+    <PackageReference Include="Abp.Quartz" Version="3.9.0" />
+    <PackageReference Include="Abp.RedisCache" Version="3.9.0" />
+    <PackageReference Include="Abp.TestBase" Version="3.9.0" />
+    <PackageReference Include="Abp.Web.Common" Version="3.9.0" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Hangfire.Core" Version="1.6.20" />
+    <PackageReference Include="Hangfire.MemoryStorage.Core" Version="1.4.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="MySql.Data" Version="8.0.13" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.13" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="System.Memory" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Integrated\Core.Integrated.csproj" />
+    <ProjectReference Include="..\lee.Abp.Application\lee.Abp.Application.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Core\Lee.Abp.Core.csproj" />
+    <ProjectReference Include="..\Lee.Abp.EntityFrameworkCore\Lee.Abp.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Hangfire.BackgroundJobs\Lee.Abp.Hangfire.BackgroundJobs.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Quartz.BackgroundJobs\Lee.Abp.Quartz.BackgroundJobs.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Utils\Lee.Abp.Utils.csproj" />
+    <ProjectReference Include="..\Lee.Abp.Web.Common\Lee.Abp.Web.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

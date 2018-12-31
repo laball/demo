@@ -1,0 +1,17 @@
+﻿环境变量：
+
+NUGET_HTTP_CACHE_PATH
+D:\Develop\NuGetPackages\http‑cache
+
+NUGET_PACKAGES
+
+D:\Develop\NuGetPackages\global‑packages
+
+
+D:\Develop\NuGetPackages
+
+D:\Develop\NuGetPackages\global‑packages
+D:\Develop\NuGetPackages\http‑cache
+D:\Develop\NuGetPackages\packages
+
+

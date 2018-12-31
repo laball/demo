@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Program - 副本.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="log4net.config" />
+    <None Remove="OrleansConfiguration.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OrleansConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Orleans.Core.Legacy" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Orleans.OrleansConsulUtils" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Orleans.OrleansSqlUtils" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Orleans.OrleansZooKeeperUtils" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Orleans.Runtime.Legacy" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="2.1.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Orleans.Implements\Orleans.Implements.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Orleans.Interfaces\Orleans.Interfaces.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

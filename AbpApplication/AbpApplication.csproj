@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="3.6.2" />
+    <PackageReference Include="Abp.AspNetCore" Version="3.6.2" />
+    <PackageReference Include="Abp.AspNetCore.OData" Version="3.6.2" />
+    <PackageReference Include="Abp.AutoMapper" Version="3.6.2" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="3.6.2" />
+    <PackageReference Include="Abp.Dapper" Version="3.6.2" />
+    <PackageReference Include="Abp.ElasticSearch.Core" Version="0.1.2" />
+    <PackageReference Include="Abp.EntityFramework.Common" Version="3.6.2" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="3.6.2" />
+    <PackageReference Include="Abp.HangFire" Version="3.6.2" />
+    <PackageReference Include="Abp.HangFire.AspNetCore" Version="3.6.2" />
+    <PackageReference Include="Abp.MailKit" Version="3.6.2" />
+    <PackageReference Include="Abp.MongoDB" Version="3.6.2" />
+    <PackageReference Include="Abp.Quartz" Version="3.6.2" />
+    <PackageReference Include="Abp.QuartzCore" Version="3.4.0" />
+    <PackageReference Include="Abp.RedisCache" Version="3.6.2" />
+    <PackageReference Include="Abp.TestBase" Version="3.6.2" />
+    <PackageReference Include="Abp.Web.Common" Version="3.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>

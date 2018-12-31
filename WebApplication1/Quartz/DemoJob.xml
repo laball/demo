@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file contains job definitions in schema version 2.0 format -->
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>DemoJob</name>
+      <group>sampleGroup</group>
+      <description></description>
+      <job-type>WebApplication1.Quartz.DemoJob,WebApplication1</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>
+            BatchCountKey
+          </key>
+          <!--每个批次数量-->
+          <value>
+            50
+          </value>
+        </entry>
+      </job-data-map>
+    </job>
+
+    <trigger>
+
+      <!--<cron>
+       <name>simple_1</name>
+        <group>sampleGroup_2</group>
+        <description>sampCron</description>
+        <job-name>DemoJob</job-name>
+        <job-group>sampleGroup</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0/5 * * * * ?</cron-expression>
+        <time-zone></time-zone>
+      </cron>-->
+
+      <!--调试配置（立即执行）-->
+      <simple>
+        <name>simple_1</name>
+        <group>sampleGroup_2</group>
+        <description></description>
+        <job-name>DemoJob</job-name>
+        <job-group>sampleGroup</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <repeat-count>0</repeat-count>
+        <repeat-interval>100000</repeat-interval>
+      </simple>
+
+    </trigger>
+
+  </schedule>
+</job-scheduling-data>

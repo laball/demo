@@ -12,7 +12,7 @@ using RabbitMQ.Client.Exceptions;
 
 namespace RabbiteMQSender
 {
-    [Debug()]
+    //[Debug()]
     internal static class Program
     {
         private static ConnectionFactory factory;

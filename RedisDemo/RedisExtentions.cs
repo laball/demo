@@ -24,13 +24,19 @@ namespace RedisDemo
         public static void AddRangeToListEx(this RedisClient redis, string listId, List<string> values)
         {
             AddRangeToListEx(redis as IRedisClient, listId, values);
+
+            if (true)
+            {
+
+            }
+
         }
 
         public static void AddRangeToListEx(this IRedisClient redis, string listId, List<string> values)
         {
             var byteArray = values.Select(c => Encoding.UTF8.GetBytes(c)).ToArray();
-            byte[][] sss = MergeCommandWithArgs(Commands.RPush, Encoding.UTF8.GetBytes(listId), byteArray);
-            MethodCache.Invoke(redis, new object[] { sss });
+            byte[][] bytes = MergeCommandWithArgs(Commands.RPush, Encoding.UTF8.GetBytes(listId), byteArray);
+            MethodCach.Invoke(redis, new object[] { bytes });
         }
 
         private static byte[][] MergeCommandWithArgs(byte[] cmd, byte[] firstArg, params byte[][] args)

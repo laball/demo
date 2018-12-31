@@ -12,7 +12,7 @@ namespace Event.PlayWithAkka.Server
     {
         public void Handle(GreetingMessage message)
         {
-            throw new InvalidOperationException();
+            //throw new InvalidOperationException();
 
             Console.WriteLine(string.Format("{0}  Hello world!", message.Name));
         }

@@ -8,7 +8,7 @@ namespace CoreWebApp.Entity
     public class User
     {
         public int ID { get; set; }
-        public string Name { get; et; }
+        public string Name { get; set; }
         public string Code { get; set; }
     }
 }

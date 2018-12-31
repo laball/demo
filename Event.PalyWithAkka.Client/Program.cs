@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.Configuration;
 using Event.PlayWithAkka.Common;
@@ -36,9 +32,9 @@ namespace Event.PalyWithAkka.Client
                 while (true)
                 {
                     var input = Console.ReadLine();
-                    if (input.Equals("SayHello"))
+                    //if (input.Equals("SayHello"))
                     {
-                        greeting.Tell(new GreetingMessage { Name = "Lee" });
+                        greeting.Tell(new GreetingMessage { Name = input });
                     }
                 }
             }

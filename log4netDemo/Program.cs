@@ -1,10 +1,12 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using log4net;
+﻿using log4net;
 using log4net.Appender;
 using log4net.Core;
 using log4net.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace log4netDemo
 {
@@ -12,29 +14,6 @@ namespace log4netDemo
     {
         static void Main(string[] args)
         {
-            //var thread = new Thread(Foo);
-            //thread.Start();
-            //Task.Delay(100).Wait();
-            //thread.Abort();// 这时就会结束循环
-
-            try
-            {
-
-                var tcs = new CancellationTokenSource();
-
-                var task = Task.Factory.StartNew(Foo, tcs.Token);
-                tcs.Cancel();
-                task.Wait();
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-
-            Console.ReadLine();
-
-
             //https://logging.apache.org/log4net/log4net-1.2.13/release/sdk/log4net.Layout.PatternLayout.html
             var log = LogManager.GetLogger("testLogger");
 
@@ -71,20 +50,6 @@ namespace log4netDemo
 
 
             Console.ReadLine();
-        }
-
-        private static void Foo()
-        {
-            try
-            {
-                while (true)
-                {
-                }
-            }
-            finally
-            {
-                Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
-            }
         }
 
 

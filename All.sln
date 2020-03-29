@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{94CD0EB3-0792-40F5-BF3D-5A2B232FF61A}"
 EndProject
@@ -92,13 +92,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreApp", "CoreApp\CoreApp.csproj", "{9E1E5541-FBAA-4ADC-8806-20C85026A1B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreWebApp", "CoreWebApp\CoreWebApp.csproj", "{8EE6632A-D415-491B-836A-084B820649B2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0CD9ECA3-4716-4B71-96E5-0A4DE0057185}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchDemo", "ElasticsearchDemo\ElasticsearchDemo.csproj", "{4D5F0031-E0D9-4765-983E-F81BDAEA4D9D}"
 EndProject
@@ -208,7 +201,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lee.Abp.Core.Common", "Lee.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lee.EF.Common", "Lee.EF.Common\Lee.EF.Common.csproj", "{5AB7A8A2-4C8B-462C-999F-6024710FE1D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkywalkingDemo", "SkywalkingDemo\SkywalkingDemo.csproj", "{7D795932-E8BC-493F-BE04-2490C2C2A98B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkywalkingDemo", "SkywalkingDemo\SkywalkingDemo.csproj", "{7D795932-E8BC-493F-BE04-2490C2C2A98B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

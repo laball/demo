@@ -32,7 +32,9 @@ namespace QuartzDemo
                 .Build();
 
             var mainJob = JobBuilder.Create<MainJob>().Build();
-            scheduler.ScheduleJob(mainJob,trigger);
+
+            
+            //scheduler.ScheduleJob(mainJob,trigger);
 
            // var trigger = TriggerBuilder.Create()
            //.WithCronSchedule("0 46 13 27 5 ?")//5s

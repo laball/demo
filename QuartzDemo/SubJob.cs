@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace QuartzDemo
 {
-    public class SubJob :IJob
+    public class SubJob : IJob
     {
-        public void Execute(IJobExecutionContext context)
+        public async Task Execute(IJobExecutionContext context)
         {
-            Trace.WriteLine(string.Format("SubJob Execute {0}, key :{1}",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),context.JobDetail.JobDataMap["key"]));
+            await Task.Factory.StartNew(() =>
+            {
+                Trace.WriteLine(string.Format("SubJob Execute {0}, key :{1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), context.JobDetail.JobDataMap["key"]));
+            });
+
         }
     }
 }

@@ -15,7 +15,7 @@ namespace QuartzDemo
         int time = 0;
 
 
-        public void Execute(IJobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
             key++;
 
@@ -47,6 +47,8 @@ namespace QuartzDemo
             //           .Build();
 
             //context.Scheduler.ScheduleJob(jobDetail,trigger);
+
+            return  Task.CompletedTask;
         }
     }
 }

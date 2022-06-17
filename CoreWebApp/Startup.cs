@@ -31,6 +31,8 @@ namespace CoreWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<TestMiddleware>();
+            services.AddSingleton<TestMiddleware>();
+            services.AddTransient<TestMiddleware>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -48,6 +50,7 @@ namespace CoreWebApp
             }
 
             app.UseMiddleware<TestMiddleware>();
+
 
             app.UseHttpsRedirection();
             app.UseMvc();

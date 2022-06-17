@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
+using CoreWebApp.Service;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CoreWebApp.Controllers
 {
@@ -11,6 +13,14 @@ namespace CoreWebApp.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly UserService _userService;
+
+
+        public ValuesController(UserService userService)
+        {
+            _userService = userService;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

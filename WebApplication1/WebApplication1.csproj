@@ -62,7 +62,7 @@
     <PackageReference Include="MassTransit.Quartz" Version="5.1.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.5" />
     <PackageReference Include="MassTransit.Redis" Version="5.1.5" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.4" />

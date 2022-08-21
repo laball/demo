@@ -15,15 +15,16 @@ namespace KafkaDemo
     {
         static void Main(string[] args)
         {
-            UseConfluentKafkaProducer();
 
-            Thread.Sleep(5000);
-
-            UseConfluentKafkaConsumer();
 
             Console.ReadLine();
         }
 
+        static void UseConfluentKafkaTest()
+        {
+            Task.Run(UseConfluentKafkaProducer);
+            Task.Run(UseConfluentKafkaConsumer);
+        }
 
         static void UseConfluentKafkaProducer()
         {

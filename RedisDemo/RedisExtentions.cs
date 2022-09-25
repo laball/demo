@@ -29,7 +29,6 @@ namespace RedisDemo
             {
 
             }
-
         }
 
         public static void AddRangeToListEx(this IRedisClient redis, string listId, List<string> values)

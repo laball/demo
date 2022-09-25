@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ServiceStack.Redis;
@@ -25,17 +23,19 @@ namespace RedisDemo
     {
         private static IRedisClient redis;// = new RedisClient("Haozhuo2015@10.140.234.217", 6379);
 
-        public static string uri = "Haozhuo2015@10.140.234.217";
+        //public static string uri = "Haozhuo2015@10.140.234.217";
+        public static string uri = "localhost";
         public static PooledRedisClientManager pool;
 
 
-        //ServiceStack.Redis从V4开始商业化，收到各种限制，一般使用3.9.71，V3的最后一个版本。
+        //ServiceStack.Redis 从V4开始商业化，收到各种限制，一般使用3.9.71，V3的最后一个版本。
+
         private static void Main(string[] args)
         {
             var config = new RedisClientManagerConfig()
             {
                 AutoStart = true,
-                DefaultDb = 1,
+                DefaultDb = 0,
                 MaxWritePoolSize = 10,
                 MaxReadPoolSize = 10,
             };
@@ -43,6 +43,10 @@ namespace RedisDemo
             pool = new PooledRedisClientManager(new string[] { uri }, new string[] { uri }, config);
 
             redis = pool.GetClient();
+
+            var value = redis.Get<string>("111");
+            //redis.Set();
+
 
 
             SortedSetTest1();

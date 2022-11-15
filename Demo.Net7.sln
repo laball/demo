@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net7", "Net7", "{D6C5787B-8D81-45B3-8518-ADEAD719711C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net7ConsoleApp", "Net7\Net7ConsoleApp\Net7ConsoleApp.csproj", "{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C} = {D6C5787B-8D81-45B3-8518-ADEAD719711C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31740E0A-2ACC-4CE9-8E36-59D3A4B1DA6B}
+	EndGlobalSection
+EndGlobal

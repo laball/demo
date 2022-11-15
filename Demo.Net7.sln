@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net7", "Net7", "{D6C5787B-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net7ConsoleApp", "Net7\Net7ConsoleApp\Net7ConsoleApp.csproj", "{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net7WebAPI", "Net7\Net7WebAPI\Net7WebAPI.csproj", "{1985886D-B25A-4972-9FA2-B1DF8B877AB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1985886D-B25A-4972-9FA2-B1DF8B877AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1985886D-B25A-4972-9FA2-B1DF8B877AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1985886D-B25A-4972-9FA2-B1DF8B877AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1985886D-B25A-4972-9FA2-B1DF8B877AB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F2289B9D-86B4-4C9F-BB13-6A2DA8619C6C} = {D6C5787B-8D81-45B3-8518-ADEAD719711C}
+		{1985886D-B25A-4972-9FA2-B1DF8B877AB6} = {D6C5787B-8D81-45B3-8518-ADEAD719711C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31740E0A-2ACC-4CE9-8E36-59D3A4B1DA6B}

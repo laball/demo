@@ -16,7 +16,7 @@ namespace Summary.Framework.Console
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        public static async Task<int> Test(int n) => await n;
+        public static async Task<T> Test<T>(T n) => await n;
     }
 
     /// <summary>

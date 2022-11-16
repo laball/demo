@@ -6,9 +6,12 @@ namespace Summary.Framework.Console
     {
         static void Main(string[] args)
         {
-            var result = AsyncContext.Run(() => AnyTypeCanBeAwait.Test(12));
+            var result1 = AsyncContext.Run(() => AnyTypeCanBeAwait.Test(12));
+            System.Console.WriteLine(result1);
 
-            System.Console.WriteLine(result);
+            var result2 = AsyncContext.Run(() => AnyTypeCanBeAwait.Test(1.2));
+            System.Console.WriteLine(result2);
+
             System.Console.WriteLine("end");
             System.Console.ReadLine();
         }

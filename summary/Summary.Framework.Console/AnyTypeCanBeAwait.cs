@@ -16,14 +16,19 @@ namespace Summary.Framework.Console
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        public static async Task<T> Test<T>(T n) => await n;
+        //public static async Task<T> Test0<T>(T n) => await n;
+        public static async Task<int> Test0(int n) => await n;
+
+        public static async void Test1() => await Task.CompletedTask;
+
+        public static async Task Test2() => await Task.CompletedTask;
     }
 
     /// <summary>
     /// 支持 await 的类型 GetAwaiter 需要返回的对象必须实现的接口
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IAwaitable<T> : INotifyCompletion
+    public interface IAwaitable<T> : ICriticalNotifyCompletion
     {
         T GetResult();
         bool IsCompleted { get; }
@@ -43,7 +48,14 @@ namespace Summary.Framework.Console
 
         public T GetResult() => m_value;
 
-        public void OnCompleted(Action continuation) => continuation?.Invoke();
+        public void OnCompleted(Action continuation)
+        {
+
+        }
+
+        public void UnsafeOnCompleted(Action continuation)
+        {
+        }
     }
 
     /// <summary>

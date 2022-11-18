@@ -70,11 +70,20 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AnyTypeCanBeAwait.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Summary.Framework.AsyncStateMachine\Summary.Framework.AsyncStateMachine.csproj">
+      <Project>{27f484da-2f38-49b7-8bbb-009efb56a91c}</Project>
+      <Name>Summary.Framework.AsyncStateMachine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Summary.Framework.Task\Summary.Framework.Task.csproj">
+      <Project>{d59afa21-1679-4173-924b-69499adfb1b0}</Project>
+      <Name>Summary.Framework.Task</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

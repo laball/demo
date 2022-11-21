@@ -81,7 +81,6 @@ namespace Summary.Framework.AsyncStateMachine
             }
         }
 
-#if DEBUG
         /// <summary>
         /// Debug 模式使用的是 class
         /// Release 模式使用的是 struct
@@ -96,6 +95,7 @@ namespace Summary.Framework.AsyncStateMachine
         /// 
         /// from https://stackoverflow.com/questions/32548509/what-is-the-purpose-of-iasyncstatemachine-setstatemachine/32548975?r=SearchResults#32548975
         /// </summary>
+#if DEBUG        
         [CompilerGenerated]
         private sealed class AsyncVoidStateMachine : IAsyncStateMachine
 #else

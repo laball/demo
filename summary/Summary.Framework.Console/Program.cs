@@ -15,8 +15,7 @@ namespace Summary.Framework.Console
             //System.Console.WriteLine(result2);
 
             //new AsyncVoid().Test();
-            new AsyncTask().Test();
-
+            //new AsyncTask().Test();
 
             System.Console.WriteLine("end");
 

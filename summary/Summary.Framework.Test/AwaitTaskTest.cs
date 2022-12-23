@@ -7,9 +7,9 @@ namespace Summary.Framework.Test
     public class AwaitTaskTest
     {
         [TestMethod]
-        public void TestTest()
+        public async void TestTest()
         {
-            new AwaitTask().Test();
+            await new AwaitTask().Test();
         }
     }
 }

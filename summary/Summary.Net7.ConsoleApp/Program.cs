@@ -9,15 +9,22 @@
         static void Main(string[] args)
         {
             while (true)
-            {
+            {   
                 var t1 = Task.Run(Test1);
                 var t2 = Task.Run(Test2);
                 Task.WaitAll(t1, t2);
                 if (a == 0 && b == 0)
                 {
+
+                    //Volatile
+
+                    //Thread
+
+                    //MemoryBarrier
+
                     Interlocked.Increment(ref Count);
 
-                    Console.WriteLine($"Count {Count} a {a} b {b}");
+                    Console.WriteLine($"Count {Count} a={a} b={b}");
                 }
 
                 x = y = a = b = 0;

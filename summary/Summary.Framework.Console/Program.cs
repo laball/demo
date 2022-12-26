@@ -29,6 +29,10 @@ namespace Summary.Framework.Console
             //new AsyncTask().Test();
 
 
+
+
+
+
             //Volatile
 
             //Thread.VolatileRead

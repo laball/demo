@@ -6,8 +6,8 @@ namespace Summary.Net7.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [ServiceFilter(typeof(MyExceptionFilterAttribute))]
-    [ServiceFilter(typeof(MyActionFilterAttribute))]
+    [ServiceFilter(typeof(MyExceptionFilterAttribute), IsReusable = true)]
+    [ServiceFilter(typeof(MyActionFilterAttribute), IsReusable = true)]
     public class BaseController : ControllerBase
     {
         protected virtual ActionResult<CommonResultDto<T>> Ok<T>(T data, string message = "", string moreMessages = "")

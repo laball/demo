@@ -28,10 +28,20 @@ namespace Summary.Framework.Console
             //new AsyncVoid().Test();
             //new AsyncTask().Test();
 
-
-
-
-
+            bool complete = false;
+            var t = new Thread(() =>
+            {
+                bool toggle = false;
+                while (!complete)
+                {
+                    //Thread.MemoryBarrier();
+                    toggle = !toggle;
+                }
+            });
+            t.Start();
+            Thread.Sleep(1000);
+            complete = true;
+            t.Join();        // 无限阻塞
 
             //Volatile
 
@@ -39,14 +49,14 @@ namespace Summary.Framework.Console
 
             //Interlocked.MemoryBarrier
 
-            for (int i = 1; i < 6; i++)
-            {
-                var tem = i;//没有这个多此一举的变量，差距很大
-                System.Threading.Tasks.Task.Factory.StartNew(() =>
-                {
-                    System.Console.WriteLine($"{tem}");
-                });
-            }
+            //for (int i = 1; i < 6; i++)
+            //{
+            //    var tem = i;//没有这个多此一举的变量，差距很大
+            //    System.Threading.Tasks.Task.Factory.StartNew(() =>
+            //    {
+            //        System.Console.WriteLine($"{tem}");
+            //    });
+            //}
 
             //AsyncTaskMethodBuilder<int> dd;
             //TaskAwaiter ff;

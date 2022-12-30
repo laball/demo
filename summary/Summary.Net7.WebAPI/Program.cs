@@ -57,6 +57,9 @@ namespace Summary.Net7.WebAPI
                 app.UseSwaggerUI();
             }
 
+            //**************************************************************************************
+            // ÖÐ¼ä¼þ
+
             //app.Use(async (context, next) =>
             //{
             //    await context.Response.WriteAsync("111");
@@ -68,10 +71,13 @@ namespace Summary.Net7.WebAPI
             //    await context.Response.WriteAsync("222");
             //});
 
-            app.Map("/Error", HandleErrorMap);
+            app.Map("/Error", HandleMap);
+
             app.MapWhen(context => context.Request.Query.ContainsKey("mapWhen"), HandleMapWhen);
 
-            app.UseMiddleware<TestMiddelware>(app, Array.Empty<object>());
+            //app.UseMiddleware<TestMiddelware>(app, Array.Empty<object>());
+
+            //**************************************************************************************
 
             app.UseAuthorization();
             app.MapControllers();
@@ -92,17 +98,17 @@ namespace Summary.Net7.WebAPI
             });
         }
 
-        private static void HandleErrorMap(IApplicationBuilder app)
+        private static void HandleMap(IApplicationBuilder app)
         {
             app.Use(async (context, next) =>
             {
-                await context.Response.WriteAsync("HandleErrorMap-Use ");
+                await context.Response.WriteAsync("HandleMap-Use ");
                 await next.Invoke();
             });
 
             app.Run(async context =>
             {
-                await context.Response.WriteAsync("HandleErrorMap-Run ");
+                await context.Response.WriteAsync("HandleMap-Run ");
             });
         }
     }

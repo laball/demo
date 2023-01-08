@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="3.10.4" />
     <PackageReference Include="IdentityServer4" Version="2.3.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.18.3" />
     <PackageReference Include="Refit" Version="4.6.58" />
     <PackageReference Include="Refit.HttpClientFactory" Version="4.6.58" />

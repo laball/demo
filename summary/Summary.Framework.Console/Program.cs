@@ -28,20 +28,20 @@ namespace Summary.Framework.Console
             //new AsyncVoid().Test();
             //new AsyncTask().Test();
 
-            bool complete = false;
-            var t = new Thread(() =>
-            {
-                bool toggle = false;
-                while (!complete)
-                {
-                    //Thread.MemoryBarrier();
-                    toggle = !toggle;
-                }
-            });
-            t.Start();
-            Thread.Sleep(1000);
-            complete = true;
-            t.Join();        // 无限阻塞
+            //bool complete = false;
+            //var t = new Thread(() =>
+            //{
+            //    bool toggle = false;
+            //    while (!complete)
+            //    {
+            //        //Thread.MemoryBarrier();
+            //        toggle = !toggle;
+            //    }
+            //});
+            //t.Start();
+            //Thread.Sleep(1000);
+            //complete = true;
+            //t.Join();        // 无限阻塞
 
             //Volatile
 

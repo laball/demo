@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="AsyncVoidTest.cs" />
     <Compile Include="AwaitTaskTest.cs" />
+    <Compile Include="ConcurrentDictionaryTest.cs" />
+    <Compile Include="DictionaryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

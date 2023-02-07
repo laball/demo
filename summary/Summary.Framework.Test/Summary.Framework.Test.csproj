@@ -54,6 +54,7 @@
     <Compile Include="ConcurrentDictionaryTest.cs" />
     <Compile Include="DictionaryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VolatileTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

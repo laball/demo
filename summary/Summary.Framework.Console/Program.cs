@@ -9,20 +9,24 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Summary.Framework.Console
 {
     internal class Program
     {
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern void SetLastError(uint dwErrCode);
+        //[DllImport("kernel32.dll", SetLastError = true)]
+        //public static extern void SetLastError(uint dwErrCode);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern void OutputDebugString(string lpOutputString);
+        //[DllImport("kernel32.dll", SetLastError = true)]
+        //public static extern void OutputDebugString(string lpOutputString);
 
         static async System.Threading.Tasks.Task Main(string[] args)
         //static void Main(string[] args)
         {
+
+            Test2();
+
             // question-1
             //System.Console.WriteLine($"Entry Main ThreadId {Thread.CurrentThread.ManagedThreadId}");
 
@@ -102,6 +106,33 @@ namespace Summary.Framework.Console
             //ConfiguredTaskAwaitable dd1;
             //System.Console.WriteLine($"end");
             System.Console.ReadLine();
+        }
+
+
+        /// <summary>
+        /// 在 debug 模式下不开启代码优化，所以需要用 release 模式下生成。
+        /// 执行 dotnet build -c release --no-incremental 后运行代码，如果没有标记为易变，则不会打印 x。
+        /// </summary>
+        public static void Test2()
+        {
+            var switchTrue = false;
+
+            var t = new Thread(() =>
+            {
+                var x = 0;
+                //while (!switchTrue) // 如果没有标记变量为易变，编译器会把 while(!switchTrue) 优化为 while(true) 从而导致永远不会打印出 x 的值
+                while (!Volatile.Read(ref switchTrue)) // 标记为易变，可以保证在调用时才进行取值，不会进行代码优化。
+                {
+                    x++;
+                }
+                System.Console.WriteLine($"x: {x}");
+            });
+            t.IsBackground = true;
+            t.Start();
+
+            Thread.Sleep(100);
+            switchTrue = true;
+            System.Console.WriteLine("ok");
         }
 
 

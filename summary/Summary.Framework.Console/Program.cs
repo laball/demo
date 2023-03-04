@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,28 @@ namespace Summary.Framework.Console
         //static void Main(string[] args)
         {
 
-            Test2();
+            MyClass mc = new MyClass();
+            MyInterface1 mi1 = mc;
+            MyInterface2 mi2 = mc;
+
+            int i = MyClass.str.Length;
+            uint j = MyClass.ui;
+
+            mc.Method1();
+            mi1.Method1();
+            mi1.Method2();
+            mi2.Method2();
+            mi2.Method3();
+            mc.Method3();
+
+
+            //Test2();
+
+            //var obj = new Foo();
+            //IDisposable disposable = obj;
+
+            //obj.Dispose();
+            //disposable.Dispose();
 
             // question-1
             //System.Console.WriteLine($"Entry Main ThreadId {Thread.CurrentThread.ManagedThreadId}");
@@ -153,20 +175,50 @@ namespace Summary.Framework.Console
 
     }
 
+    public interface MyInterface1
+    {
+        void Method1();
+        void Method2();
+    }
+    public interface MyInterface2
+    {
+        void Method2();
+        void Method3();
+    }
+
+    class MyClass : MyInterface1, MyInterface2
+    {
+        public static string str = "MyString";
+        public static uint ui = 0xAAAAAAAA;
+        public void Method1() { System.Console.WriteLine("Method1"); }
+        public void Method2() { System.Console.WriteLine("Method2"); }
+        public virtual void Method3() { System.Console.WriteLine("Method3"); }
+    }
 
     class IFoo
     {
 
     }
 
-    class Foo
+    class Foo : IDisposable
     {
 
         public string Name { get; set; }
 
+        void IDisposable.Dispose()
+        {
+            Trace.WriteLine("IDisposable.Dispose()");
+        }
+
+        public void Dispose()
+        {
+            Trace.WriteLine("Class.Dispose()");
+        }
+
         public static implicit operator Foo(IFoo b) => new Foo();
 
         //public static implicit operator Foo(object b) => new Foo();
+
     }
 
     static class ObjectWaitableExtensions

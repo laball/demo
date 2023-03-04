@@ -93,11 +93,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="111.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\..\packages\Microsoft.Windows.CsWin32.0.2.188-beta\analyzers\cs\MessagePack.Annotations.dll" />
     <Analyzer Include="..\..\packages\Microsoft.Windows.CsWin32.0.2.188-beta\analyzers\cs\MessagePack.dll" />
     <Analyzer Include="..\..\packages\Microsoft.Windows.CsWin32.0.2.188-beta\analyzers\cs\Microsoft.Bcl.AsyncInterfaces.dll" />

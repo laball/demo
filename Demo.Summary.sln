@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Summary.DesignPatterns", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Summary.DesignPatterns.Test", "summary\DesignPatterns\Summary.DesignPatterns.Test\Summary.DesignPatterns.Test.csproj", "{6D17C0BC-16A3-4707-8B4F-CBE4F7ABB33C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summary.CodeSnippet", "summary\Summary.CodeSnippet\Summary.CodeSnippet.csproj", "{F8C5B93E-8D53-46AF-858B-FBE22DCF3B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Summary.CodeSnippet", "summary\Summary.CodeSnippet\Summary.CodeSnippet.csproj", "{F8C5B93E-8D53-46AF-858B-FBE22DCF3B25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Volo.Abp", "Volo.Abp", "{603E8713-DAE3-4CEE-A2E1-BAE959071030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,7 @@ Global
 		{FB7ED0BD-9D3D-492F-A4A9-439368940233} = {D8A72CA9-8F63-4DEA-B8DA-9FC82FC90871}
 		{6D17C0BC-16A3-4707-8B4F-CBE4F7ABB33C} = {D8A72CA9-8F63-4DEA-B8DA-9FC82FC90871}
 		{F8C5B93E-8D53-46AF-858B-FBE22DCF3B25} = {5542155C-5BAA-4223-838B-5D220495E8AA}
+		{603E8713-DAE3-4CEE-A2E1-BAE959071030} = {5542155C-5BAA-4223-838B-5D220495E8AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31740E0A-2ACC-4CE9-8E36-59D3A4B1DA6B}

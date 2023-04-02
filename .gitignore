@@ -251,3 +251,4 @@ paket-files/
 .nuget/
 *.orig
 src/WVS.MVC/App_Data/
+*.log

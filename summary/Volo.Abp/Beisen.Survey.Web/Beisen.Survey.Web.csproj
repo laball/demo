@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.Core" Version="7.1.0" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="7.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Beisen.Survey.Application\Beisen.Survey.Application.csproj" />
+    <ProjectReference Include="..\Beisen.Survey.EntityFrameworkCore\Beisen.Survey.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Beisen.Survey.HttpApi\Beisen.Survey.HttpApi.csproj" />
+  </ItemGroup>
+
+</Project>

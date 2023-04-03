@@ -1,5 +1,6 @@
 ﻿using Beisen.Survey.Application.Contracts;
 using Beisen.Survey.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 
 namespace Beisen.Survey.Application
@@ -16,6 +17,10 @@ namespace Beisen.Survey.Application
         public async Task<SurveyTaskDto> CreateAsync(CreateUpdateSurveyTaskDto input)
         {
             var inputTask = ObjectMapper.Map<CreateUpdateSurveyTaskDto, SurveyTask>(input);
+
+            inputTask.SurveyLink = "11";
+            inputTask.SurveyName = "22";
+
             var outputTask = await _surveyTaskRepository.InsertAsync(inputTask);
             return ObjectMapper.Map<SurveyTask, SurveyTaskDto>(outputTask);
         }
@@ -25,6 +30,7 @@ namespace Beisen.Survey.Application
             await _surveyTaskRepository.DeleteAsync(id);
         }
 
+        //[Authorize]
         public async Task<SurveyTaskDto> GetAsync(Guid id)
         {
             var task = await _surveyTaskRepository.GetAsync(id);

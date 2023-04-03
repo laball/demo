@@ -11,10 +11,9 @@ namespace Beisen.Survey.EntityFrameworkCore
     [DependsOn(typeof(AbpEntityFrameworkCoreSqlServerModule))]
     public class SurveyEntityFrameworkCoreModule : AbpModule
     {
-
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
-            //BookStoreEfCoreEntityExtensionMappings.Configure();     
+            // BookStoreEfCoreEntityExtensionMappings.Configure();
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)

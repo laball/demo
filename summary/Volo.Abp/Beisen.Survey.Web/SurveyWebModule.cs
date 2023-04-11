@@ -82,7 +82,7 @@ namespace Beisen.Survey.Web
             Configure<AbpAutoMapperOptions>(options =>
             {
                 options.AddMaps<SurveyWebModule>();
-                options.AddMaps<SurveyApplicationModule>();
+                //options.AddMaps<SurveyApplicationModule>();
             });
         }
 
@@ -90,6 +90,7 @@ namespace Beisen.Survey.Web
         {
             Configure<AbpAspNetCoreMvcOptions>(options =>
             {
+                // 设置程序集自动API
                 options.ConventionalControllers.Create(typeof(SurveyApplicationModule).Assembly);
             });
         }
@@ -101,8 +102,9 @@ namespace Beisen.Survey.Web
                 {
                     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Survey API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
-                    options.CustomSchemaIds(type => type.FullName);
                     options.HideAbpEndpoints();
+                    options.CustomSchemaIds(type => type.FullName);// 显示全名称，与过滤配合，否则无法识别；
+                    // 设置自定义SchemaFilter，用于过滤Abp自身的Dto(Volo.开头的)；
                     options.SchemaGeneratorOptions.SchemaFilters.Add(new DisableVoloAbpSchemaFilter());
                 }
             );

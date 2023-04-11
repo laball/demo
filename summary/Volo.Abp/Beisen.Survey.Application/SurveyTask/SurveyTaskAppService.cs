@@ -1,6 +1,5 @@
 ﻿using Beisen.Survey.Application.Contracts;
 using Beisen.Survey.Domain;
-using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 
 namespace Beisen.Survey.Application
@@ -30,7 +29,6 @@ namespace Beisen.Survey.Application
             await _surveyTaskRepository.DeleteAsync(id);
         }
 
-        //[Authorize]
         public async Task<SurveyTaskDto> GetAsync(Guid id)
         {
             var task = await _surveyTaskRepository.GetAsync(id);

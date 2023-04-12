@@ -25,6 +25,7 @@ namespace Beisen.Survey.Domain
         /// 2-已完成
         /// 3-已过期
         /// 4-已取消
+        /// <see cref="Beisen.Survey.Domain.Shared.SurveyTask.SurveyTaskStatus"/>
         /// </summary>
         public int Status { get; set; }
 

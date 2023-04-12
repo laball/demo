@@ -17,6 +17,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beisen.Survey.HttpApi", "su
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beisen.Survey.Web", "summary\Volo.Abp\Beisen.Survey.Web\Beisen.Survey.Web.csproj", "{DCF441A6-D425-4A96-8AAF-21D87580558A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5F7738B4-FA8A-4B43-8E68-79BF152A46E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beisen.Survey.TestBase", "summary\Volo.Abp\Beisen.Survey.TestBase\Beisen.Survey.TestBase.csproj", "{C15F42B1-77D7-440E-9456-B57EE0037CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beisen.Survey.Application.Tests", "summary\Volo.Abp\Beisen.Survey.Application.Tests\Beisen.Survey.Application.Tests.csproj", "{08A964CC-DC12-4191-B9B2-59F028A887CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beisen.Survey.Domain.Tests", "summary\Volo.Abp\Beisen.Survey.Domain.Tests\Beisen.Survey.Domain.Tests.csproj", "{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beisen.Survey.EntityFrameworkCore.Tests", "summary\Volo.Abp\Beisen.Survey.EntityFrameworkCore.Tests\Beisen.Survey.EntityFrameworkCore.Tests.csproj", "{B8DBC145-B564-4EB0-A3B5-8761011473DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,9 +121,63 @@ Global
 		{DCF441A6-D425-4A96-8AAF-21D87580558A}.Release|arm64.Build.0 = Release|Any CPU
 		{DCF441A6-D425-4A96-8AAF-21D87580558A}.Release|x86.ActiveCfg = Release|Any CPU
 		{DCF441A6-D425-4A96-8AAF-21D87580558A}.Release|x86.Build.0 = Release|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Debug|arm64.Build.0 = Debug|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Debug|x86.Build.0 = Debug|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Release|arm64.ActiveCfg = Release|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Release|arm64.Build.0 = Release|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Release|x86.ActiveCfg = Release|Any CPU
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC}.Release|x86.Build.0 = Release|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Debug|arm64.Build.0 = Debug|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Debug|x86.Build.0 = Debug|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Release|arm64.ActiveCfg = Release|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Release|arm64.Build.0 = Release|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Release|x86.ActiveCfg = Release|Any CPU
+		{08A964CC-DC12-4191-B9B2-59F028A887CA}.Release|x86.Build.0 = Release|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Debug|arm64.Build.0 = Debug|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Debug|x86.Build.0 = Debug|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Release|arm64.ActiveCfg = Release|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Release|arm64.Build.0 = Release|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Release|x86.ActiveCfg = Release|Any CPU
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318}.Release|x86.Build.0 = Release|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Debug|arm64.Build.0 = Debug|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Release|arm64.ActiveCfg = Release|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Release|arm64.Build.0 = Release|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C15F42B1-77D7-440E-9456-B57EE0037CFC} = {5F7738B4-FA8A-4B43-8E68-79BF152A46E4}
+		{08A964CC-DC12-4191-B9B2-59F028A887CA} = {5F7738B4-FA8A-4B43-8E68-79BF152A46E4}
+		{F802C1A1-FBF2-4CF2-9834-DFB18F93B318} = {5F7738B4-FA8A-4B43-8E68-79BF152A46E4}
+		{B8DBC145-B564-4EB0-A3B5-8761011473DB} = {5F7738B4-FA8A-4B43-8E68-79BF152A46E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31740E0A-2ACC-4CE9-8E36-59D3A4B1DA6B}

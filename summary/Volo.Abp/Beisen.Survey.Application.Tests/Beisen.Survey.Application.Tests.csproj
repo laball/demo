@@ -6,9 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Core" Version="7.1.0" />
+    <ProjectReference Include="..\Beisen.Survey.Application\Beisen.Survey.Application.csproj" />
+    <ProjectReference Include="..\Beisen.Survey.Domain.Tests\Beisen.Survey.Domain.Tests.csproj" />
   </ItemGroup>
 
 </Project>

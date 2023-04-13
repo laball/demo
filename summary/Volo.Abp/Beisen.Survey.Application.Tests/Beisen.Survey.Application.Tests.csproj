@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Beisen.Survey.Application\Beisen.Survey.Application.csproj" />
     <ProjectReference Include="..\Beisen.Survey.Domain.Tests\Beisen.Survey.Domain.Tests.csproj" />
   </ItemGroup>
